@@ -1,5 +1,6 @@
 import { Roboto } from "next/font/google";
 import { createTheme } from "@mui/material/styles";
+import { fontSize, lineHeight } from "@mui/system";
 
 const roboto = Roboto({
 	weight: ["300", "400", "500", "700"],
@@ -47,6 +48,17 @@ const theme = createTheme({
             fontWeight:300,
             fontSize:'6rem',
             lineHeight:1.167,
+        },
+        h2:{
+            fontWeight:700,
+            fontSize:'1.5rem',
+            lineHeight:2,
+        },
+        body1:{
+            fontWeight:400,
+            fontSize:'1.5rem',
+            lineHeight:2,
+            color:'#4C5331'
         }
 	},
 
