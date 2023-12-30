@@ -1,4 +1,8 @@
 import { Box, autocompleteClasses } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import Link from "next/link";
+import AuthButton from "@/components/authentication/AuthButton";
+import AuthInput from "@/components/authentication/AuthInput";
 
 export default function Page() {
   const imageUrl = "/authentication/signup.svg";
@@ -13,7 +17,13 @@ export default function Page() {
         alignItems: "center",
       }}
     >
-      <Box
+      <Grid
+        container
+        justifyContent={"center"}
+        alignItems="center"
+        direction='column'
+        spacing={4}
+        
         sx={{
           backgroundImage: `url(${imageUrl})`,
           height: "80%",
@@ -23,8 +33,15 @@ export default function Page() {
           backgroundPosition: "center",
         }}
       >
-        {/* Your content here */}
-      </Box>
+        <Grid item>
+          <AuthInput placeholder="   Username" type='string'></AuthInput>
+        </Grid>
+        <Grid item><AuthInput placeholder="   Your Email" type='password'></AuthInput></Grid>
+        <Grid item><AuthInput placeholder="   Password" type='password'></AuthInput></Grid>
+        <Grid item><AuthInput placeholder="   Confirm Password" type='password'></AuthInput></Grid>
+        <Grid item container justifyContent="flex-end" sx={{paddingRight:'200px'}}>  <AuthButton name={'Sign Up'}/></Grid>
+      </Grid>
+    
     </Box>
   );
 }
