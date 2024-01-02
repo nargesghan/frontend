@@ -1,10 +1,13 @@
-import { Box, Grid, autocompleteClasses } from "@mui/material";
-import AuthInput from "@/components/authentication/AuthInput";
+'use client'
+import React from "react";
+import { Box, Grid} from "@mui/material";
 import Link from "next/link";
+import AuthInput from "@/components/authentication/AuthInput";
 import AuthButton from "@/components/authentication/AuthButton";
 
+const imageUrl = "/authentication/login.svg";
 export default function Page() {
-  const imageUrl = "/authentication/login.svg";
+
 
   return (
     <Box

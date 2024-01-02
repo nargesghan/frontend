@@ -1,6 +1,6 @@
-import { Box, autocompleteClasses } from "@mui/material";
+'use client'
+import  Box  from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import Link from "next/link";
 import AuthButton from "@/components/authentication/AuthButton";
 import AuthInput from "@/components/authentication/AuthInput";
 
