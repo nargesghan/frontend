@@ -22,7 +22,7 @@ const theme = createTheme({
             dark:'#2B7D71',
 
         },
-        info:{
+        info:{//red
             main:'#FF5DA2',
             light:'#FFEFF6',
             dark:'#BF467A',
@@ -76,6 +76,7 @@ const theme = createTheme({
           xl: 1536,
         },
       },
+
 
 });
 
