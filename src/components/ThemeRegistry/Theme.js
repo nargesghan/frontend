@@ -59,8 +59,23 @@ const theme = createTheme({
             fontSize:'1.5rem',
             lineHeight:2,
             color:'#4C5331'
+        },
+        body2:{
+            fontWeight:500,
+            fontSize:'0.8rem',
+            lineHeight:2,
+            color:'#252B42'
         }
 	},
+    breakpoints: {
+        values: {
+          xs: 0,
+          sm: 900,
+          md: 1350,
+          
+          xl: 1536,
+        },
+      },
 
 });
 
