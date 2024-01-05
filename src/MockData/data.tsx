@@ -10,7 +10,7 @@ type Job = {
     qualifications:string[];//
     salary:number;//
     website:string;//
-    path: string;
+   
   };
   
   const jobs: Job[] = [
@@ -25,7 +25,7 @@ type Job = {
       qualifications: ["Bachelor's degree in Computer Science", "2+ years of experience"],
       salary: 70000,
       date: new Date(2024, 0, Math.floor(Math.random() * 31)),
-      path: "/",
+
       website:"www.techcorp.com",
     },
     {
@@ -39,7 +39,7 @@ type Job = {
       qualifications: ["Master's degree in a related field", "Experience with Python"],
       salary: 80000,
       date: new Date(2024, 1, Math.floor(Math.random() * 28)),
-      path: "/",
+  
       website:"www.datasolutions.com",
     },
     {
@@ -54,7 +54,6 @@ type Job = {
       qualifications: ["Experience in project management", "Knowledge of software development"],
       salary: 75000,
       date: new Date(2024, 2, Math.floor(Math.random() * 31)),
-      path: "/",
       website: "www.projectsinc.com"
     },
     {
@@ -69,7 +68,6 @@ type Job = {
       qualifications: ["Experience with JavaScript", "Knowledge of web design principles"],
       salary: 65000,
       date: new Date(2024, 3, Math.floor(Math.random() * 30)),
-      path: "/",
       website: "www.webworks.com"
     },
     {
@@ -84,7 +82,6 @@ type Job = {
       qualifications: ["Experience with JavaScript", "Knowledge of web design principles"],
       salary: 65000,
       date: new Date(2024, 3, Math.floor(Math.random() * 30)),
-      path: "/",
       website: "www.webworks.com"
     },
     {
@@ -98,7 +95,7 @@ type Job = {
       qualifications: ["Experience with design software", "Creative mindset"],
       salary: 60000,
       date: new Date(2024, 4, Math.floor(Math.random() * 31)),
-      path: "/",
+      
       website: "www.designstudio.com"
     },
     {
@@ -112,7 +109,7 @@ type Job = {
       qualifications: ["Bachelor's degree in Computer Science", "2+ years of experience"],
       salary: 70000,
       date: new Date(2024, 0, Math.floor(Math.random() * 31)),
-      path: "/",
+      
       website:"www.techcorp.com",
     },
     {
@@ -126,7 +123,7 @@ type Job = {
       qualifications: ["Master's degree in a related field", "Experience with Python"],
       salary: 80000,
       date: new Date(2024, 1, Math.floor(Math.random() * 28)),
-      path: "/",
+      
       website:"www.datasolutions.com",
     },
     {
@@ -141,7 +138,7 @@ type Job = {
       qualifications: ["Experience in project management", "Knowledge of software development"],
       salary: 75000,
       date: new Date(2024, 2, Math.floor(Math.random() * 31)),
-      path: "/",
+      
       website: "www.projectsinc.com"
     },
     {
@@ -156,7 +153,7 @@ type Job = {
       qualifications: ["Experience with JavaScript", "Knowledge of web design principles"],
       salary: 65000,
       date: new Date(2024, 3, Math.floor(Math.random() * 30)),
-      path: "/",
+      
       website: "www.webworks.com"
     },
     {
@@ -171,7 +168,7 @@ type Job = {
       qualifications: ["Experience with JavaScript", "Knowledge of web design principles"],
       salary: 65000,
       date: new Date(2024, 3, Math.floor(Math.random() * 30)),
-      path: "/",
+      
       website: "www.webworks.com"
     },
     {
@@ -185,7 +182,7 @@ type Job = {
       qualifications: ["Experience with design software", "Creative mindset"],
       salary: 60000,
       date: new Date(2024, 4, Math.floor(Math.random() * 31)),
-      path: "/",
+      
       website: "www.designstudio.com"
     },
     

@@ -31,7 +31,8 @@ interface Props {
   location: string;
   company: string;
   date:string;
-  path: string;
+  id:number;
+
   // define your props here
 }
 
@@ -41,7 +42,8 @@ const JobBox: React.FC<Props> = ({
   location,
   company,
   date,
-  path,
+  id,
+
 }) => {
   return (
     <>
@@ -65,7 +67,7 @@ const JobBox: React.FC<Props> = ({
           </Typography>
           
         </Stack>
-        <Link href={path}>
+        <Link href={`/job/${id}`}>
           <Button
             sx={{
               height: "42px",
