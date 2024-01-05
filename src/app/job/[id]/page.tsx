@@ -1,30 +1,35 @@
-// import { useRouter } from 'next/router'
+import React from "react";
+import ButtonAppBar from "@/components/General/Navbar";
+import Jobheader from "@/components/Job/Jobheader";
 
-// export async function getServerSideProps(context) {
-//   const { id } = context.query
-//   // Fetch data based on the ID
-//   const res = await fetch(`https://your-api-endpoint.com/jobs/${id}`)
-//   const job = await res.json()
+import jobs from "@/MockData/data";
 
-//   return {
-//     props: { job }, // will be passed to the page component as props
-//   }
-// }
+type Job = {
+  id: number;
+  imageURL: string;
+  title: string;
+  location: string;
+  company: string;
+  date: Date;
+  summary: string;
+  responsibilities: string[];
+  qualifications: string[];
+  salary: number;
+  website: string;
+  path: string;
+};
 
-import React from 'react';
-import ButtonAppBar from '@/components/General/Navbar';
-
-interface Props {
-  // define your props here
-}
-
-const Page: React.FC<Props> = (props) => {
+export default function Page({ params }: { params: { id: number } }) {
   return (
-    <div>
-        <ButtonAppBar/>
-      // Your component code goes here
-    </div>
+    <>
+      <ButtonAppBar />
+      <Jobheader
+        imageURL={jobs[params.id]?.imageURL}
+        title={jobs[params.id]?.title}
+        company={jobs[params.id]?.company}
+        location={jobs[params.id]?.location}
+        website={jobs[params.id]?.website}
+      />
+    </>
   );
 }
-
-export default Page;

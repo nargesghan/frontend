@@ -1,30 +1,35 @@
 import React from 'react';
-
-interface Props {
+import Button from '@mui/material/Button';
+import ShareIcon from '@mui/icons-material/Share';
+interface SendResumeProps {
   // define your props here
 }
 
-export const SendResume: React.FC<Props> = (props) => {
+export const SendResume: React.FC<SendResumeProps> = (props) => {
   return (
-    <div>
-      // Your component code goes here
-    </div>
+    <Button variant="contained" color='info'>Send resume</Button>
   );
 }
 
-export const AddToFavorites: React.FC<Props> = (props) => {
+interface AddToFavoritesProps{
+
+}
+
+export const AddToFavorites: React.FC<AddToFavoritesProps> = (props) => {
     return (
-      <div>
-        // Your component code goes here
-      </div>
+        <Button variant="outlined" color='info'>Add to favorites</Button>
     );
   }
+  
+  interface ShareProps{
 
-  export const Share: React.FC<Props> = (props) => {
+  }
+
+  export const Share: React.FC<ShareProps> = (props) => {
     return (
-      <div>
-        // Your component code goes here
-      </div>
+        <Button variant="contained" sx={{borderRadius:'50%'}} startIcon={<ShareIcon />} color='info'>
+        
+      </Button>
     );
   }
 
