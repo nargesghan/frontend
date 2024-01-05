@@ -21,7 +21,7 @@ export default function Home() {
               title={title}
               location={location}
               company={company}
-              date={date}
+              date={date.toDateString()}
               path={path}
             />
           </Grid>
