@@ -24,7 +24,7 @@ const Jobheader: React.FC<Props> = ({
   return (
     <Grid
       container
-      columns={{xs: 4, sm: 8,md:16}}
+      columns={{xs: 4, sm: 14,md:16}}
       sx={{
         borderColor: "info",
         border: "solid",

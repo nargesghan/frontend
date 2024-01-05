@@ -3,6 +3,7 @@ import ButtonAppBar from "@/components/General/Navbar";
 import Jobheader from "@/components/Job/Jobheader";
 
 import jobs from "@/MockData/data";
+import Jobdescription from "@/components/Job/Jobdescription";
 
 type Job = {
   id: number;
@@ -29,6 +30,13 @@ export default function Page({ params }: { params: { id: number } }) {
         company={jobs[params.id]?.company}
         location={jobs[params.id]?.location}
         website={jobs[params.id]?.website}
+      />
+      <Jobdescription
+        summary={jobs[params.id]?.summary}
+        responsibilities={jobs[params.id]?.responsibilities}
+        qualifications={jobs[params.id]?.qualifications}
+        salary={jobs[params.id]?.salary}
+        date={jobs[params.id]?.date.toDateString()}
       />
     </>
   );
