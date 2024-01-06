@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, Box } from "@mui/material";
 import { AddToFavorites, SendResume, Share } from "./Buttons";
 import Image from "next/image";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
@@ -24,16 +24,19 @@ const Jobheader: React.FC<Props> = ({
   return (
     <Grid
       container
-      columns={{xs: 4, sm: 14,md:16}}
+      columns={{ xs: 4, sm: 14, md: 16 }}
       sx={{
-        borderColor: "info",
+        borderColor: "#FF5DA2",
         border: "solid",
         borderRadius: "10px",
-      margin:'auto',
-      marginY:'10px',
-      width:'90%',
-      padding:'5px',
+        margin: "auto",
+        marginY: "10px",
+        width: "90%",
+        padding: "5px",
+        boxShadow: "rgba(0, 0, 0, 0.06) 0px 4px 4px 0px inset",
       }}
+      alignItems="center"
+      justifyContent={"center"}
     >
       <Grid item xs={3}>
         <Image
@@ -44,12 +47,22 @@ const Jobheader: React.FC<Props> = ({
         />
       </Grid>
       <Grid item xs={4}>
-        <Typography variant="h2">{title}</Typography>
-        <Typography>     <LocationCityIcon fontSize="small" />{company}</Typography>
+        <Typography variant="h2" sx={{ color: "#212121" }}>
+          {title}
+        </Typography>
+        <Typography variant="h2" sx={{ color: "info.main" }}>
+          {" "}
+          <LocationCityIcon fontSize="small" />
+          {company}
+        </Typography>
       </Grid>
       <Grid item xs={4}>
-        <Typography>    <LocationOnIcon fontSize="small"  />{location}</Typography>
-        <Typography>{website}</Typography>
+        <Typography>
+          {" "}
+          <LocationOnIcon fontSize="small" />
+          {location}
+        </Typography>
+        <a href={`https://${website}`}><Typography color='#7CBDFA'>{website}</Typography></a>
       </Grid>
       <Grid item xs={3}>
         <SendResume />

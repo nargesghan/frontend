@@ -27,9 +27,22 @@ export const AddToFavorites: React.FC<AddToFavoritesProps> = (props) => {
 
   export const Share: React.FC<ShareProps> = (props) => {
     return (
-        <Button variant="contained" sx={{borderRadius:'50%'}} startIcon={<ShareIcon />} color='info'>
-        
-      </Button>
+      <Button
+      variant="contained"
+      sx={{
+        borderRadius: '50%',
+        // Set width and height to be equal, ensuring a circular shape
+        width: '45px', // Adjust the value as needed
+        height: '45px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+      
+      color="info"
+    >
+      <ShareIcon />
+    </Button>
     );
   }
 

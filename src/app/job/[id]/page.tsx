@@ -1,43 +1,57 @@
 import React from "react";
 import ButtonAppBar from "@/components/General/Navbar";
 import Jobheader from "@/components/Job/Jobheader";
-
+import Grid from "@mui/material/Grid";
 import jobs from "@/MockData/data";
 import Jobdescription from "@/components/Job/Jobdescription";
+import JobBox from "@/components/General/JobBox";
 
-type Job = {
-  id: number;
-  imageURL: string;
-  title: string;
-  location: string;
-  company: string;
-  date: Date;
-  summary: string;
-  responsibilities: string[];
-  qualifications: string[];
-  salary: number;
-  website: string;
-  path: string;
-};
+export default function Page({ params }: { params: { id: string } }) {
+  const Job = jobs.find((job) => job.id === params.id);
 
-export default function Page({ params }: { params: { id: number } }) {
+  if (!Job) {
+    return <>page not found</>;
+  }
   return (
     <>
       <ButtonAppBar />
       <Jobheader
-        imageURL={jobs[params.id]?.imageURL}
-        title={jobs[params.id]?.title}
-        company={jobs[params.id]?.company}
-        location={jobs[params.id]?.location}
-        website={jobs[params.id]?.website}
+        imageURL={Job?.imageURL}
+        title={Job?.title}
+        company={Job?.company}
+        location={Job?.location}
+        website={Job?.website}
       />
       <Jobdescription
-        summary={jobs[params.id]?.summary}
-        responsibilities={jobs[params.id]?.responsibilities}
-        qualifications={jobs[params.id]?.qualifications}
-        salary={jobs[params.id]?.salary}
-        date={jobs[params.id]?.date.toDateString()}
+        summary={Job?.summary}
+        responsibilities={Job?.responsibilities}
+        qualifications={Job?.qualifications}
+        salary={Job?.salary}
+        date={Job?.date.toDateString()}
       />
+      {/* related job advertisements */}
+      <Grid
+        container
+        spacing={{ xs: 2, md: 3 }}
+        columns={{ xs: 4, sm: 8, md: 12 }}
+      >
+        {jobs.map(({ imageURL, title, location, company, date, id }, index) => {
+          if (index < 3) {
+            return (
+              <Grid item xs={12} sm={4} md={4} key={id}>
+                <JobBox
+                  imageURL={imageURL}
+                  title={title}
+                  location={location}
+                  company={company}
+                  date={date.toDateString()}
+                  id={id}
+                />
+              </Grid>
+            );
+          }
+        })}
+      </Grid>
     </>
   );
 }

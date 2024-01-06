@@ -1,5 +1,7 @@
+const { v4: uuidv4 } = require('uuid');
+
 type Job = {
-  id:number;
+  id:string;
     imageURL: string;
     title: string;
     location: string;
@@ -15,7 +17,7 @@ type Job = {
   
   const jobs: Job[] = [
     {
-      id:1,
+      id:uuidv4(),
       imageURL: "/General/digikala.svg",
       title: "front-end developer",
       location: "Tehran",
@@ -29,7 +31,7 @@ type Job = {
       website:"www.techcorp.com",
     },
     {
-      id:2,
+      id:uuidv4(),
       imageURL: "https://webassets.cafebazaar.ir/images/bazaar-logo.svg",
       title: "data scientist",
       location: "remote",
@@ -43,7 +45,7 @@ type Job = {
       website:"www.datasolutions.com",
     },
     {
-      id:3,
+      id:uuidv4(),
       imageURL:
         "https://upload.wikimedia.org/wikipedia/commons/6/66/Iran_Khodro_symbol.svg",
       title: "Mechanical Engineer",
@@ -57,7 +59,7 @@ type Job = {
       website: "www.projectsinc.com"
     },
     {
-      id:4,
+      id:uuidv4(),
       imageURL:
         "https://upload.wikimedia.org/wikipedia/commons/3/3d/MTN_Irancell_Logo.svg",
       title: "driver",
@@ -71,7 +73,7 @@ type Job = {
       website: "www.webworks.com"
     },
     {
-      id:5,
+      id:uuidv4(),
       imageURL:
         "https://upload.wikimedia.org/wikipedia/commons/4/41/Alibaba_en_logo.svg",
       title: "programmer",
@@ -85,7 +87,7 @@ type Job = {
       website: "www.webworks.com"
     },
     {
-      id:6,
+      id:uuidv4(),
       imageURL: "/General/digikala.svg",
       title: "front-end developer",
       location: "Tehran",
@@ -99,7 +101,7 @@ type Job = {
       website: "www.designstudio.com"
     },
     {
-      id:7,
+      id:uuidv4(),
       imageURL: "/General/digikala.svg",
       title: "front-end developer",
       location: "Tehran",
@@ -113,7 +115,7 @@ type Job = {
       website:"www.techcorp.com",
     },
     {
-      id:8,
+      id:uuidv4(),
       imageURL: "https://webassets.cafebazaar.ir/images/bazaar-logo.svg",
       title: "data scientist",
       location: "remote",
@@ -127,7 +129,7 @@ type Job = {
       website:"www.datasolutions.com",
     },
     {
-      id:9,
+      id:uuidv4(),
       imageURL:
         "https://upload.wikimedia.org/wikipedia/commons/6/66/Iran_Khodro_symbol.svg",
       title: "Mechanical Engineer",
@@ -142,7 +144,7 @@ type Job = {
       website: "www.projectsinc.com"
     },
     {
-      id:10,
+      id:uuidv4(),
       imageURL:
         "https://upload.wikimedia.org/wikipedia/commons/3/3d/MTN_Irancell_Logo.svg",
       title: "driver",
@@ -157,7 +159,7 @@ type Job = {
       website: "www.webworks.com"
     },
     {
-      id:11,
+      id:uuidv4(),
       imageURL:
         "https://upload.wikimedia.org/wikipedia/commons/4/41/Alibaba_en_logo.svg",
       title: "programmer",
@@ -172,7 +174,7 @@ type Job = {
       website: "www.webworks.com"
     },
     {
-      id:12,
+      id:uuidv4(),
       imageURL: "/General/digikala.svg",
       title: "front-end developer",
       location: "Tehran",

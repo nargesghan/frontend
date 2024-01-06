@@ -31,7 +31,7 @@ interface Props {
   location: string;
   company: string;
   date:string;
-  id:number;
+  id:string;
 
   // define your props here
 }
