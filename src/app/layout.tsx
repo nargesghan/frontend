@@ -2,8 +2,8 @@ import React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import ThemeRegistry from "../components/ThemeRegistry/ThemeRegistry";
+
 
 const inter = Inter({ subsets: ["latin"] });
 

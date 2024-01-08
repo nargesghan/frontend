@@ -1,5 +1,5 @@
 import React from "react";
-import ButtonAppBar from "@/components/General/Navbar";
+import ButtonAppBar from "@/components/General/EmployeeNavbar";
 import Jobheader from "@/components/Job/Jobheader";
 import Grid from "@mui/material/Grid";
 import jobs from "@/MockData/data";

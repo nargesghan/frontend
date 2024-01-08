@@ -1,14 +1,15 @@
 import React from "react";
-import ButtonAppBar from "../components/General/Navbar";
+
 import SiteIntro from "../components/Home/SiteIntro";
 import JobBox from "@/components/General/JobBox";
 import jobs from "@/MockData/data";
 import { Grid } from "@mui/material";
+import ButtonAppBar from "../components/General/EmployeeNavbar";
 
 export default function Home() {
   return (
     <>
-      <ButtonAppBar />
+      <ButtonAppBar/>
       <SiteIntro />
       <Grid
         container
