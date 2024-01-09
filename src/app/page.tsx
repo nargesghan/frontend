@@ -3,7 +3,7 @@ import React from "react";
 import SiteIntro from "../components/Home/SiteIntro";
 import JobBox from "@/components/General/JobBox";
 import jobs from "@/MockData/data";
-import { Grid } from "@mui/material";
+import  Grid  from "@mui/material/Grid";
 import ButtonAppBar from "../components/General/EmployeeNavbar";
 
 export default function Home() {
