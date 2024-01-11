@@ -2,6 +2,7 @@
 import Sidebar from "@/components/Employee/SideBar"
 import { usePathname } from 'next/navigation'
 import ButtonAppBar from "@/components/Employee/EmployeeAuthNavbar"
+import SearchBox from "@/components/Employee/SearchBox"
 
 export default function EmployeeLayout({
     children, // will be a page or nested layout
@@ -13,7 +14,7 @@ export default function EmployeeLayout({
 
     return (
       <section style={{ position: 'relative' }}>
-             {pathname.startsWith('/employee/dashboard') ? <Sidebar /> : <ButtonAppBar/>}
+             {pathname.startsWith('/employee/dashboard') ? <Sidebar /> : <><ButtonAppBar/><SearchBox/></>}
    
         {children}
       </section>

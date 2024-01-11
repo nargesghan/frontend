@@ -10,23 +10,29 @@ import WorkIcon from "@mui/icons-material/Work";
 import InterestsIcon from "@mui/icons-material/Interests";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
+import Link from "next/link";
 
 export default function TypographyMenu() {
   return (
     <Paper  sx={{ width:'160px', bgcolor: "info.light",display:'flex',justifyContent:'center',position:'absolute' }}>
       <MenuList>
+      <Link href="/employee/dashboard/submittedresumes">
         <MenuItem>
           <ListItemIcon>
             <ArrowCircleUpIcon fontSize="small" />
           </ListItemIcon>
           <Typography variant="body2">Submitted resumes</Typography>
         </MenuItem>
+        </Link>
+      <Link href="/employee/dashboard/myresumes">
         <MenuItem>
           <ListItemIcon>
             <PersonIcon fontSize="small" />
           </ListItemIcon>
           <Typography variant="body2">My resume</Typography>
         </MenuItem>
+        </Link>
+      <Link href="/employee/recommendedjobs">
         <MenuItem>
           <ListItemIcon>
             <WorkIcon fontSize="small" />
@@ -35,6 +41,8 @@ export default function TypographyMenu() {
           Recommended jobs
           </Typography>
         </MenuItem>
+        </Link>
+      <Link href="/employee/interested">
         <MenuItem>
           <ListItemIcon>
             <InterestsIcon fontSize="small" />
@@ -43,6 +51,8 @@ export default function TypographyMenu() {
           Interested jobs
           </Typography>
         </MenuItem>
+        </Link>
+      <Link href="/employee/dashboard/settings">
         <MenuItem>
           <ListItemIcon>
             <SettingsIcon fontSize="small"/>
@@ -51,6 +61,7 @@ export default function TypographyMenu() {
           Settings
           </Typography>
         </MenuItem>
+        </Link>
         <MenuItem>
           <ListItemIcon>
             <LogoutIcon fontSize="small"/>

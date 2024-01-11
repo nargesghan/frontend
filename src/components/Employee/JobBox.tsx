@@ -45,9 +45,14 @@ const JobBox: React.FC<Props> = ({  imageURL,
         height={140}
       />
     </Grid>
-    <Grid item xs={4}>
+    <Grid item xs={8}>
       <Typography variant="h2" sx={{ color: "#212121" }}>
         {title}
+      </Typography>
+      <Typography>
+        {" "}
+        <LocationOnIcon fontSize="small" />
+        {location}
       </Typography>
       <Typography variant="h2" sx={{ color: "info.main" }}>
         {" "}
@@ -55,14 +60,7 @@ const JobBox: React.FC<Props> = ({  imageURL,
         {company}
       </Typography>
     </Grid>
-    <Grid item xs={4}>
-      <Typography>
-        {" "}
-        <LocationOnIcon fontSize="small" />
-        {location}
-      </Typography>
- 
-    </Grid>
+
     <Grid item xs={3}>
       <SendResume />
       <AddToFavorites />
