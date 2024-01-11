@@ -12,7 +12,15 @@ const Page: React.FC<Props> = (props) => {
               title="front-end developer"
               location="Tehran"
               company="Digikala"
-              date='24 July 2024'
+              sentResume={false}
+              liked={true}
+              id="1"/>
+               <JobBox   imageURL="/General/digikala.svg"
+              title="front-end developer"
+              location="Tehran"
+              company="Digikala"
+              sentResume={true}
+              liked={true}
               id="1"/>
     </div>
   );

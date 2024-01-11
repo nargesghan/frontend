@@ -10,7 +10,8 @@ interface Props {
   title: string;
   location: string;
   company: string;
-  date:string;
+  sentResume:boolean;
+  liked:boolean;
   id:string;
 }
 
@@ -18,21 +19,21 @@ const JobBox: React.FC<Props> = ({  imageURL,
     title,
     location,
     company,
-    date,
+    sentResume,
+    liked,
     id,}) => {
   return (
     <Grid
     container
     columns={{ xs: 4, sm: 14, md: 16 }}
     sx={{
-      borderColor: "#FF5DA2",
-      border: "solid",
+      
       borderRadius: "10px",
       margin: "auto",
       marginY: "10px",
-      width: "90%",
+      width: "70%",
       padding: "5px",
-      boxShadow: "rgba(0, 0, 0, 0.06) 0px 4px 4px 0px inset",
+      boxShadow: 'rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px'
     }}
     alignItems="center"
     justifyContent={"center"}
@@ -62,8 +63,8 @@ const JobBox: React.FC<Props> = ({  imageURL,
     </Grid>
 
     <Grid item xs={3}>
-      <SendResume />
-      <AddToFavorites />
+      <SendResume sentResume={sentResume} />
+      <AddToFavorites liked={liked}/>
     </Grid>
     <Grid item xs={2}>
       <Share />
