@@ -39,6 +39,7 @@ const Sidebar: React.FC<Props> = (props) => {
         top: 0,
         left: 0,
         padding: 0,
+  
       }}
       component="nav"
       aria-labelledby="nested-list-subheader"

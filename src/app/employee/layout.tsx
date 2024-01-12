@@ -21,7 +21,7 @@ export default function EmployeeLayout({
         <>
           <ButtonAppBar />
           <SearchBox />
-          <Stack direction={'column'} alignItems={'center'} justifyContent={'flex-end'}>
+          <Stack direction={'column'} alignItems={'center'} justifyContent={'flex-end'} sx={{marginTop:'50px'}}>
           <Box
             width={"1200px"}
             height={80}

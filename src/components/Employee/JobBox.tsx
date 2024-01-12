@@ -29,9 +29,8 @@ const JobBox: React.FC<Props> = ({  imageURL,
     sx={{
       
       borderRadius: "10px",
-      margin: "auto",
       marginY: "10px",
-      width: "60%",
+      width: "100%",
       padding: "5px",
       boxShadow: 'rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px'
     }}
@@ -50,12 +49,12 @@ const JobBox: React.FC<Props> = ({  imageURL,
       <Typography variant="h2" sx={{ color: "#212121" }}>
         {title}
       </Typography>
-      <Typography>
+      <Typography variant='h3'>
         {" "}
         <LocationOnIcon fontSize="small" />
         {location}
       </Typography>
-      <Typography variant="h2" sx={{ color: "info.main" }}>
+      <Typography variant="h3" >
         {" "}
         <LocationCityIcon fontSize="small" />
         {company}

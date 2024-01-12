@@ -54,6 +54,12 @@ const theme = createTheme({
             fontSize:'1.5rem',
             lineHeight:2,
         },
+        h3:{
+            fontWeight:700,
+            fontSize:'1rem',
+            color:'#252B42',
+            lineHeight:3,
+        },
         body1:{
             fontWeight:400,
             fontSize:'1.5rem',

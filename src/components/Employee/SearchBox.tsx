@@ -29,6 +29,7 @@ const SearchBox: React.FC<Props> = (props) => {
         alignItems:'center',
         flexDirection:'column',
         bgcolor:'secondary.light',
+        marginTop:'40px'
       }}
     >
       <Typography variant="h2" sx={{}}>
