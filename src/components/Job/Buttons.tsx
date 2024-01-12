@@ -1,15 +1,18 @@
+'use client'
 import React from "react";
 import Button from "@mui/material/Button";
 import ShareIcon from "@mui/icons-material/Share";
+import BookmarkAddedIcon from "@mui/icons-material/BookmarkAdded";
+import { useState } from "react";
 interface SendResumeProps {
   sentResume: boolean;
 }
 
-export const SendResume: React.FC<SendResumeProps> = ({sentResume}) => {
+export const SendResume: React.FC<SendResumeProps> = ({ sentResume }) => {
   return (
     <>
       {sentResume ? (
-        <Button variant="contained" color="secondary">
+        <Button variant="contained" color="secondary" disabled>
           Resume Sent
         </Button>
       ) : (
@@ -26,10 +29,22 @@ interface AddToFavoritesProps {
 }
 
 export const AddToFavorites: React.FC<AddToFavoritesProps> = ({ liked }) => {
+  const [like,setLike]=useState(liked)
+  function Save(){
+    setLike((last) => !last);
+  }
   return (
-    <Button variant="outlined" color="info">
-      Add to favorites
-    </Button>
+    <>
+      {like ? (
+        <Button variant="outlined" color="info" onClick={Save}>
+          Add to favorites
+        </Button>
+      ) : (
+        <Button variant="outlined" color="info" onClick={Save}>
+          <BookmarkAddedIcon color='info'/>
+        </Button>
+      )}
+    </>
   );
 };
 
@@ -41,16 +56,16 @@ export const Share: React.FC<ShareProps> = (props) => {
       variant="contained"
       sx={{
         borderRadius: "50%",
-        // Set width and height to be equal, ensuring a circular shape
-        width: "45px", // Adjust the value as needed
-        height: "45px",
+        width: "40px", 
+        height: "40px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        padding:0
       }}
       color="info"
     >
-      <ShareIcon />
+      <ShareIcon fontSize="small"/>
     </Button>
   );
 };

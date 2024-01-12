@@ -9,7 +9,6 @@ import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import Avatar from "@mui/material/Avatar";
 import { Button } from "@mui/material";
-import Link from "next/link";
 import TypographyMenu from "./DropDownMenue";
 
 const Search = styled("div")(({ theme }) => ({
