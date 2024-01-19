@@ -31,63 +31,66 @@ const Sidebar: React.FC<Props> = (props) => {
     <List
       sx={{
         width: "100%",
-        height:'fit-content',
+        height: "fit-content",
         maxWidth: 240,
         bgcolor: "background.paper",
         boxShadow: " rgba(0, 0, 0, 0.16) 0px 1px 4px",
         position: "fixed",
         top: 0,
         left: 0,
-        padding:0
+        padding: 0,
+  
       }}
       component="nav"
       aria-labelledby="nested-list-subheader"
     >
-      <Link href='/employee/dashboard/submittedresumes'><ListItemButton divider={true}>
-        <ListItemIcon>
-          <ArrowCircleUpIcon />
-        </ListItemIcon>
-        <ListItemText>Submitted resumes</ListItemText>
-      </ListItemButton></Link>
-      <Link href='/employee/dashboard/myresumes'>
-      <ListItemButton divider={true}>
-        <ListItemIcon>
-          <PersonIcon />
-        </ListItemIcon>
-        <ListItemText>My resume</ListItemText>
-      </ListItemButton>
+      <Link href="/employee/dashboard/submittedresumes">
+        <ListItemButton divider={true}>
+          <ListItemIcon>
+            <ArrowCircleUpIcon />
+          </ListItemIcon>
+          <ListItemText>Submitted resumes</ListItemText>
+        </ListItemButton>
       </Link>
-      <Link href='/employee/dashboard/recommended'>
-      <ListItemButton divider={true}>
-        <ListItemIcon>
-          <WorkIcon />
-        </ListItemIcon>
-        <ListItemText>Recommended jobs</ListItemText>
-      </ListItemButton>
+      <Link href="/employee/dashboard/myresume">
+        <ListItemButton divider={true}>
+          <ListItemIcon>
+            <PersonIcon />
+          </ListItemIcon>
+          <ListItemText>My resume</ListItemText>
+        </ListItemButton>
       </Link>
-      <Link href='/employee/dashboard/interested'>
-      <ListItemButton divider={true}>
-        <ListItemIcon>
-          <InterestsIcon />
-        </ListItemIcon>
-        <ListItemText>Interested jobs</ListItemText>
-      </ListItemButton>
+      <Link href="/employee/recommendedjobs">
+        <ListItemButton divider={true}>
+          <ListItemIcon>
+            <WorkIcon />
+          </ListItemIcon>
+          <ListItemText>Recommended jobs</ListItemText>
+        </ListItemButton>
       </Link>
-      <Link href='/employee/dashboard/settings'>
-      <ListItemButton divider={true}>
-        <ListItemIcon>
-          <SettingsIcon />
-        </ListItemIcon>
-        <ListItemText>Settings</ListItemText>
-      </ListItemButton>
+      <Link href="/employee/interestedjobs">
+        <ListItemButton divider={true}>
+          <ListItemIcon>
+            <InterestsIcon />
+          </ListItemIcon>
+          <ListItemText>Interested jobs</ListItemText>
+        </ListItemButton>
       </Link>
-      <Link href='/'>
-      <ListItemButton>
-        <ListItemIcon>
-          <LogoutIcon />
-        </ListItemIcon>
-        <ListItemText>Log out</ListItemText>
-      </ListItemButton>
+      <Link href="/employee/dashboard/settings">
+        <ListItemButton divider={true}>
+          <ListItemIcon>
+            <SettingsIcon />
+          </ListItemIcon>
+          <ListItemText>Settings</ListItemText>
+        </ListItemButton>
+      </Link>
+      <Link href="/">
+        <ListItemButton>
+          <ListItemIcon>
+            <LogoutIcon />
+          </ListItemIcon>
+          <ListItemText>Log out</ListItemText>
+        </ListItemButton>
       </Link>
     </List>
   );

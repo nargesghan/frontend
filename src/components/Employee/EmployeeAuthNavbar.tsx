@@ -4,11 +4,12 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import SearchIcon from "@mui/icons-material/Search";
+import { useState } from "react/";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
-import Link from "next/link";
+import Avatar from "@mui/material/Avatar";
+import { Button } from "@mui/material";
+import TypographyMenu from "./DropDownMenue";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -53,6 +54,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function ButtonAppBar() {
+  const [menu, setMenu] = useState(false);
+  function handleAvatarClick() {
+    setMenu((lastMenu) => !lastMenu);
+    console.log(menu)
+  }
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
@@ -64,24 +70,25 @@ export default function ButtonAppBar() {
           >
             JobJob
           </Typography>
-          <Link href="/employer">
-          <Button color="inherit">Employers/Post Job</Button>
-          </Link>
-          <Link href="/authentication/employee/login">
-            <Button color="inherit">Login</Button>
-          </Link>
-          <Link href="/authentication/employee/signup">
-            <Button color="inherit">Sign-up</Button>
-          </Link>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search jobs..."
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
+          <Typography sx={{ pr: 3 }} variant="body2">
+            Mahi Ghermez
+          </Typography>
+          <Box sx={{ position: "static" }}>
+            <Button onClick={handleAvatarClick}>
+              {" "}
+              <Avatar
+                sx={{
+                  bgcolor: "info.main",
+                  color: "info.dark",
+                  marginRight: 10,
+                }}
+              >
+                MG
+              </Avatar>
+            </Button>
+
+            {menu && <TypographyMenu />}
+          </Box>
         </Toolbar>
       </AppBar>
     </Box>
