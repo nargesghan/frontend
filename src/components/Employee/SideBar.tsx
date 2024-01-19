@@ -52,7 +52,7 @@ const Sidebar: React.FC<Props> = (props) => {
           <ListItemText>Submitted resumes</ListItemText>
         </ListItemButton>
       </Link>
-      <Link href="/employee/dashboard/myresumes">
+      <Link href="/employee/dashboard/myresume">
         <ListItemButton divider={true}>
           <ListItemIcon>
             <PersonIcon />
@@ -68,7 +68,7 @@ const Sidebar: React.FC<Props> = (props) => {
           <ListItemText>Recommended jobs</ListItemText>
         </ListItemButton>
       </Link>
-      <Link href="/employee/interested">
+      <Link href="/employee/interestedjobs">
         <ListItemButton divider={true}>
           <ListItemIcon>
             <InterestsIcon />

@@ -24,7 +24,7 @@ export default function TypographyMenu() {
           <Typography variant="body2">Submitted resumes</Typography>
         </MenuItem>
         </Link>
-      <Link href="/employee/dashboard/myresumes">
+      <Link href="/employee/dashboard/myresume">
         <MenuItem>
           <ListItemIcon>
             <PersonIcon fontSize="small" />
@@ -42,7 +42,7 @@ export default function TypographyMenu() {
           </Typography>
         </MenuItem>
         </Link>
-      <Link href="/employee/interested">
+      <Link href="/employee/interestedjobs">
         <MenuItem>
           <ListItemIcon>
             <InterestsIcon fontSize="small" />
