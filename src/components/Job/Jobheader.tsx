@@ -4,6 +4,7 @@ import { AddToFavorites, SendResume, Share } from "./Buttons";
 import Image from "next/image";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { Truculenta } from "next/font/google";
 
 interface Props {
   imageURL: string;
@@ -65,8 +66,8 @@ const Jobheader: React.FC<Props> = ({
         <a href={`https://${website}`}><Typography color='#7CBDFA'>{website}</Typography></a>
       </Grid>
       <Grid item xs={3}>
-        <SendResume />
-        <AddToFavorites />
+        <SendResume sentResume={false}/>
+        <AddToFavorites liked={true} />
       </Grid>
       <Grid item xs={2}>
         <Share />
