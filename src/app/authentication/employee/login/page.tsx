@@ -19,6 +19,7 @@ export default function Page() {
         alignItems: "center",
       }}
     >
+      <form>
       <Grid
         container
         justifyContent={"center"}
@@ -42,7 +43,7 @@ export default function Page() {
         <Grid item><Link href={'/'}>Forgot Password</Link></Grid>
         <Grid item container justifyContent="flex-end" sx={{paddingRight:'200px'}}>  <AuthButton name={'Log in'}/></Grid>
       </Grid>
-    
+      </form>
     </Box>
   );
 }
