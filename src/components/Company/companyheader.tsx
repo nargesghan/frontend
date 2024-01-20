@@ -1,24 +1,25 @@
 import React from "react";
 import { Grid, Typography, Box } from "@mui/material";
-import { AddToFavorites, SendResume, Share } from "./Buttons";
 import Image from "next/image";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import { Truculenta } from "next/font/google";
+
 
 interface Props {
+    name:string;
+    size:string;
   imageURL: string;
-  title: string;
-  company: string;
+  industry:string;
   location: string;
   website: string;
   // define your props here
 }
 
-const Jobheader: React.FC<Props> = ({
+const Companyheader: React.FC<Props> = ({
   imageURL,
-  title,
-  company,
+  name,
+  size,
+  industry,
   location,
   website,
 }) => {
@@ -42,19 +43,19 @@ const Jobheader: React.FC<Props> = ({
       <Grid item xs={3}>
         <Image
           src={imageURL}
-          alt={`${company} logo`}
+          alt={`${name} logo`}
           width={140}
           height={140}
         />
       </Grid>
       <Grid item xs={4}>
-        <Typography variant="h2" sx={{ color: "#212121" }}>
-          {title}
+        <Typography  sx={{ color: "#212121",fontWeight:700,fontSize:'35px' }} component={'h1'}>
+          {name}
         </Typography>
         <Typography variant="h2" sx={{ color: "info.main" }}>
           {" "}
-          <LocationCityIcon fontSize="small" />
-          {company}
+          
+          company size: <br /> {size}
         </Typography>
       </Grid>
       <Grid item xs={4}>
@@ -65,15 +66,12 @@ const Jobheader: React.FC<Props> = ({
         </Typography>
         <a href={`https://${website}`}><Typography color='#7CBDFA'>{website}</Typography></a>
       </Grid>
-      <Grid item xs={3}>
-        <SendResume sentResume={false}/>
-        <AddToFavorites liked={true} />
+      <Grid item xs={3}><Typography sx={{fontSize:'35px'}}>Industry</Typography>
+       <Typography variant="h2">{industry}</Typography>
       </Grid>
-      <Grid item xs={2}>
-        <Share />
-      </Grid>
+      
     </Grid>
   );
 };
 
-export default Jobheader;
+export default Companyheader;

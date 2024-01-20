@@ -2,7 +2,7 @@ import React from "react";
 import ButtonAppBar from "@/components/General/EmployeeNavbar";
 import Jobheader from "@/components/Job/Jobheader";
 import Grid from "@mui/material/Grid";
-import jobs from "@/MockData/data";
+import {jobs} from "@/MockData/data";
 import Jobdescription from "@/components/Job/Jobdescription";
 import JobBox from "@/components/General/JobBox";
 
