@@ -1,24 +1,27 @@
 import React from "react";
-import Link from "next/link";
+
 import  Button  from "@mui/material/Button";
 
 interface Props {
   name: string;
+disabled:boolean;
 }
 
-const AuthButton: React.FC<Props> = ({ name }) => {
+const AuthButton: React.FC<Props> = ({ name,disabled }) => {
   return (
     <div>
-      <Link href={"/authentication/signup"}>
-        {" "}
+
         <Button
           variant="contained"
+          disabled={disabled}
+          type='submit'
           size="large"
           sx={{ backgroundColor: "info.dark", fontWeight: 700 }}
+       
         >
           {name}
         </Button>
-      </Link>
+
     </div>
   );
 };

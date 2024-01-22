@@ -37,7 +37,7 @@ export default function Page() {
         <Grid item><AuthInput placeholder="   Your Email" type='email'></AuthInput></Grid>
         <Grid item><AuthInput placeholder="   Password" type='password'></AuthInput></Grid>
         <Grid item><AuthInput placeholder="   Confirm Password" type='password'></AuthInput></Grid>
-        <Grid item container justifyContent="flex-end" sx={{paddingRight:'200px'}}>  <AuthButton name={'Sign Up'}/></Grid>
+        <Grid item container justifyContent="flex-end" sx={{paddingRight:'200px'}}>  <AuthButton disabled={false} name={'Sign Up'}/></Grid>
       </Grid>
     
     </Box>
