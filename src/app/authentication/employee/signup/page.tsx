@@ -5,6 +5,7 @@ import Grid from "@mui/material/Grid";
 import AuthButton from "@/components/authentication/AuthButton";
 import AuthInput from "@/components/authentication/AuthInput";
 import { Typography } from '@mui/material';
+import Link from 'next/link';
 
 export default function Page() {
   const imageUrl = "/authentication/signup.svg";
@@ -78,11 +79,13 @@ export default function Page() {
         justifyContent={"center"}
         alignItems="center"
         direction='column'
-        spacing={4}>
+        spacing={4}
+        sx={{paddingTop:'30%'}}>
         <Grid item><AuthInput ref={emailRef} placeholder="   Your Email" type='email'></AuthInput></Grid>
         <Grid item><AuthInput ref={passwordRef} placeholder="   Password" type='password'></AuthInput></Grid>
         <Grid item><AuthInput ref={confirmPasswordRef} placeholder="   Confirm Password" type='password'></AuthInput></Grid>
         <Grid item container justifyContent="flex-end" sx={{paddingRight:'200px'}}>  <AuthButton disabled={loading} name={'Sign Up'}/></Grid>
+        <Link href='/authentication/employee/login'><Typography variant='body1'>Log in</Typography></Link>
         </Grid>
         </form>
         <Typography sx={{color:'red'}} variant='body2'>{error}</Typography>

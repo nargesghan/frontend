@@ -41,7 +41,7 @@ export default function Page() {
         </Grid>
         <Grid item><AuthInput placeholder="   Password" type='password'></AuthInput></Grid>
         <Grid item><Link href={'/'}>Forgot Password</Link></Grid>
-        <Grid item container justifyContent="flex-end" sx={{paddingRight:'200px'}}>  <AuthButton name={'Log in'}/></Grid>
+        <Grid item container justifyContent="flex-end" sx={{paddingRight:'200px'}}>  <AuthButton disabled={false} name={'Log in'}/></Grid>
       </Grid>
       
     </Box>
