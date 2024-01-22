@@ -51,7 +51,7 @@ export default function Page() {
             backgroundColor: "info.contrastText",
           }}
         >
-          <form>
+          
             <Label htmlFor={"email"}>Email address</Label>
             <Input placeholder="email" id="email" type="email" required></Input>
             <Label htmlFor={"password"}>password</Label>
@@ -75,7 +75,7 @@ export default function Page() {
               }}
             ></input></Box>
          
-          </form>
+          
         </Box>
       </Box>
     </>
