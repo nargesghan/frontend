@@ -33,9 +33,7 @@ export default function Page() {
           backgroundPosition: "center",
         }}
       >
-        <Grid item>
-          <AuthInput placeholder="   Username" type='string'></AuthInput>
-        </Grid>
+     
         <Grid item><AuthInput placeholder="   Your Email" type='email'></AuthInput></Grid>
         <Grid item><AuthInput placeholder="   Password" type='password'></AuthInput></Grid>
         <Grid item><AuthInput placeholder="   Confirm Password" type='password'></AuthInput></Grid>
