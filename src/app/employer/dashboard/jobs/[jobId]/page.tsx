@@ -1,37 +1,38 @@
 import React from "react";
-import  Grid from "@mui/material/Grid";
+import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
-import  Typography  from "@mui/material/Typography";
+import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import {jobs} from "@/MockData/data";
+import Box from "@mui/material/Box";
+import { jobs } from "@/MockData/data";
+import Stack from "@mui/material/Stack";
+import Application from "@/components/Employer/dashboard/Application";
 
 async function getData() {
-    const res = await fetch('https://api.example.com/...')
-    // The return value is *not* serialized
-    // You can return Date, Map, Set, etc.
-   
-    if (!res.ok) {
-      // This will activate the closest `error.js` Error Boundary
-      throw new Error('Failed to fetch data')
-    }
-   
-    return res.json()
+  const res = await fetch("https://api.example.com/...");
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
   }
 
+  return res.json();
+}
+
 export default async function Page({ params }: { params: { jobId: string } }) {
-    const Job = jobs.find((job) => job.id === params.jobId);
-    // const data = await getData()
+  const Job = jobs.find((job) => job.id === params.jobId);
+  // const data = await getData()
 
-
- 
-
-    if (!Job) {
-        return <>job {params.jobId} not found</>;
-      }
-    return (
-        <Grid
+  if (!Job) {
+    return <>job {params.jobId} not found</>;
+  }
+  return (
+    <Box sx={{display:'flex',flexDirection:'column'}}>
+      <Grid
         container
         columns={{ xs: 4, sm: 14, md: 16 }}
         sx={{
@@ -71,15 +72,56 @@ export default async function Page({ params }: { params: { jobId: string } }) {
             <LocationOnIcon fontSize="small" />
             {Job?.location}
           </Typography>
-          <a href={`https://${Job?.website}`}><Typography color='#7CBDFA'>{Job?.website}</Typography></a>
+          <a href={`https://${Job?.website}`}>
+            <Typography color="#7CBDFA">{Job?.website}</Typography>
+          </a>
         </Grid>
         <Grid item xs={5}>
-        <Button variant="contained" color="info">
-          Edit job information
-        </Button>
+          <Button variant="contained" color="info">
+            Edit job information
+          </Button>
         </Grid>
- 
       </Grid>
-    // <h1 style={{marginTop:'200px'}}>{params.jobId}</h1>
-    )
-  }
+      <Stack
+        direction={"column"}
+        alignItems={"center"}
+        sx={{ bgcolor: "#FAFAFA" ,border:'solid'}}
+        width={"1200px"}
+
+      >
+        <Application
+          name="narges"
+          city="Tehran"
+          imageURL="/General/Profile.png"
+          status="reject"
+        />
+           <Application
+          name="narges"
+          city="Tehran"
+          imageURL="/General/Profile.png"
+          status="reject"
+        />
+           <Application
+          name="narges"
+          city="Tehran"
+          imageURL="/General/Profile.png"
+          status="pending"
+        />
+           <Application
+          name="narges"
+          city="Tehran"
+          imageURL="/General/Profile.png"
+          status="accept"
+        />
+           <Application
+          name="narges"
+          city="Tehran"
+          imageURL="/General/Profile.png"
+          status="pending"
+        />
+      </Stack>
+    </Box>
+  );
+}
+
+/* // <h1 style={{marginTop:'200px'}}>{params.jobId}</h1> */
