@@ -8,10 +8,10 @@ import AddIcon from "@mui/icons-material/Add";
 import PersonIcon from "@mui/icons-material/Person";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
-import WorkIcon from '@mui/icons-material/Work';
-import SchoolIcon from '@mui/icons-material/School';
-import CardMembershipIcon from '@mui/icons-material/CardMembership';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import WorkIcon from "@mui/icons-material/Work";
+import SchoolIcon from "@mui/icons-material/School";
+import CardMembershipIcon from "@mui/icons-material/CardMembership";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 const Input = styled("input")({
   width: "507px",
@@ -237,7 +237,10 @@ const Page: React.FC<Props> = (props) => {
             }}
           >
             <HowToRegIcon sx={{ color: "#0EC5D7" }} fontSize="large" />
-            <Title>skills</Title> <Label style={{display:'none'}} htmlFor="skill">skill</Label>
+            <Title>skills</Title>{" "}
+            <Label style={{ display: "none" }} htmlFor="skill">
+              skill
+            </Label>
             <Input
               placeholder="skill"
               id="skill"
@@ -257,7 +260,10 @@ const Page: React.FC<Props> = (props) => {
             }}
           >
             <WorkIcon sx={{ color: "#0EC5D7" }} fontSize="large" />
-            <Title>work experience</Title> <Label style={{display:'none'}} htmlFor="experience">experience</Label>
+            <Title>work experience</Title>{" "}
+            <Label style={{ display: "none" }} htmlFor="experience">
+              experience
+            </Label>
             <Input
               placeholder="experience"
               id="experience"
@@ -277,7 +283,10 @@ const Page: React.FC<Props> = (props) => {
             }}
           >
             <SchoolIcon sx={{ color: "#0EC5D7" }} fontSize="large" />
-            <Title>Education</Title> <Label style={{display:'none'}} htmlFor="education">education</Label>
+            <Title>Education</Title>{" "}
+            <Label style={{ display: "none" }} htmlFor="education">
+              education
+            </Label>
             <Input
               placeholder="education"
               id="education"
@@ -297,7 +306,10 @@ const Page: React.FC<Props> = (props) => {
             }}
           >
             <CardMembershipIcon sx={{ color: "#0EC5D7" }} fontSize="large" />
-            <Title>Licenses & certifications</Title> <Label style={{display:'none'}} htmlFor="certificates">certificates</Label>
+            <Title>Licenses & certifications</Title>{" "}
+            <Label style={{ display: "none" }} htmlFor="certificates">
+              certificates
+            </Label>
             <Input
               placeholder="certificates"
               id="certificates"
@@ -317,7 +329,10 @@ const Page: React.FC<Props> = (props) => {
             }}
           >
             <CloudUploadIcon sx={{ color: "#0EC5D7" }} fontSize="large" />
-            <Title>Uoload Resume</Title> <Label style={{display:'none'}} htmlFor="resume">resume</Label>
+            <Title>Uoload Resume</Title>{" "}
+            <Label style={{ display: "none" }} htmlFor="resume">
+              resume
+            </Label>
             <Input
               placeholder="resume"
               id="resume"
@@ -325,8 +340,26 @@ const Page: React.FC<Props> = (props) => {
               type="text"
             ></Input>
           </Box>
-          <Box sx={{display:'flex',alignItems:'center',justifyContent:"center"}}> <input type="submit" value={'save changes'} style={{width:'182px',height:'58px',backgroundColor:'#0EC5D7',border:'none',color:'#FFFFFF'}}></input></Box>
-         
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            {" "}
+            <input
+              type="submit"
+              value={"save changes"}
+              style={{
+                width: "182px",
+                height: "58px",
+                backgroundColor: "#0EC5D7",
+                border: "none",
+                color: "#FFFFFF",
+              }}
+            ></input>
+          </Box>
         </Stack>
       </form>
     </Box>

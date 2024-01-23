@@ -60,7 +60,7 @@ export default function ButtonAppBar() {
     console.log(menu)
   }
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <>
       <AppBar position="fixed">
         <Toolbar>
           <Typography
@@ -81,6 +81,6 @@ export default function ButtonAppBar() {
           </Box>
         </Toolbar>
       </AppBar>
-    </Box>
+    </>
   );
 }

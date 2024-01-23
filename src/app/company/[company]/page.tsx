@@ -32,6 +32,7 @@ export default function Page() {
       <Companydescription
         about={Company?.about}
       />
+      {/* add Job opportunities when api is ready */}
     </>
   );
 }

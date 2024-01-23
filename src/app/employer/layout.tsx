@@ -6,10 +6,8 @@ export default function EmployerLayout({
     children: React.ReactNode
   }) {
     return (
-      <section>
+      <section style={{display:'flex',justifyContent:'center'}}>
         <ButtonAppBar/>
-        
-   
         {children}
       </section>
     )
