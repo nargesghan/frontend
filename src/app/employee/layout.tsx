@@ -5,8 +5,8 @@ import ButtonAppBar from "@/components/Employee/EmployeeAuthNavbar";
 import SearchBox from "@/components/Employee/SearchBox";
 import DashboardTab from "@/components/Employee/DashboardTab";
 import { Box,Stack } from "@mui/material";
-
-export default function EmployeeLayout({
+import withAuth from '../utils/withAuthEmployee';
+function EmployeeLayout({
   children, // will be a page or nested layout
 }: {
   children: React.ReactNode;
@@ -44,3 +44,5 @@ export default function EmployeeLayout({
     
   );
 }
+
+export default withAuth(EmployeeLayout);

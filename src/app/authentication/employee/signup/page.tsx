@@ -36,7 +36,9 @@ export default function Page() {
     const data = await response.json();
 
     if (response.status === 201) {
-      // TODO: Handle successful registration (e.g., redirect to login page)
+       // Save the token in Local Storage
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('userId', data.userId);
       console.log('Your account has been created successfully.', data);
       setError('')
     } else {
