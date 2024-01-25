@@ -5,8 +5,8 @@ const withAuth = WrappedComponent => {
   return (props) => {
     const router = useRouter();
     const token = localStorage.getItem('token');
-
-    if (!token) {
+    const userType=localStorage.getItem('userType')
+    if (!token || userType!='employer') {
       router.replace('/authentication/employer/login');
       return null;
     }

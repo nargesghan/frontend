@@ -16,4 +16,4 @@ function EmployerLayout({
     )
   }
 
-  export default withAuth(EmployerLayout)
+  export default withAuth(EmployerLayout);

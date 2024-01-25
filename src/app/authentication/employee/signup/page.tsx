@@ -6,6 +6,7 @@ import AuthButton from "@/components/authentication/AuthButton";
 import AuthInput from "@/components/authentication/AuthInput";
 import { Typography } from '@mui/material';
 import Link from 'next/link';
+import { useRouter } from "next/navigation";
 
 export default function Page() {
   const imageUrl = "/authentication/signup.svg";
@@ -15,6 +16,8 @@ export default function Page() {
   const [loading, setLoading] = useState(false);
   const [error,setError]=useState('');
 
+  const router=useRouter();
+  
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setLoading(true);
@@ -39,8 +42,10 @@ export default function Page() {
        // Save the token in Local Storage
     localStorage.setItem('token', data.token);
     localStorage.setItem('userId', data.userId);
+    localStorage.setItem('userType','employee')
       console.log('Your account has been created successfully.', data);
       setError('')
+      router.replace("/employee/recommendedjobs");
     } else {
       // TODO: Handle errors from the API
   

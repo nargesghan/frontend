@@ -1,8 +1,10 @@
 "use client";
-import React from "react";
+import React, { useRef, useState } from "react";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/system";
 import ButtonAppBar from "@/components/General/EmployerNavbar";
+import { useRouter } from "next/navigation";
+
 const imageUrl = "/authentication/login.svg";
 
 const Input = styled("input")({
@@ -25,6 +27,49 @@ const Label = styled("label")({
 });
 
 export default function Page() {
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const router=useRouter();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setLoading(true);
+
+    const email = emailRef.current?.value;
+    const password = passwordRef.current?.value;
+   
+
+    // TODO: Add validation for email, password, and confirmPassword
+
+    const response = await fetch('http://127.0.0.1:8000/users/api/login-user/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, password: password })
+    });
+
+    const data = await response.json();
+
+    if (response.status === 200) {
+       // Save the token in Local Storage
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('userId', data?.userid);
+    localStorage.setItem('userType','employer');
+      console.log('You are loged in successfully.', data);
+      setError('')
+      router.replace('/')
+    } else {
+      // TODO: Handle errors from the API
+  
+      setError(data.message)
+    }
+
+    setLoading(false);
+  };
+
   return (
     <>
       <ButtonAppBar />
@@ -40,6 +85,7 @@ export default function Page() {
           justifyContent: "center",
         }}
       >
+        <form onSubmit={handleSubmit}>
         <Box
           sx={{
             border: "solid",
@@ -53,15 +99,17 @@ export default function Page() {
         >
           
             <Label htmlFor={"email"}>Email address</Label>
-            <Input placeholder="email" id="email" type="email" required></Input>
+            <Input ref={emailRef} placeholder="email" id="email" type="email" required></Input>
             <Label htmlFor={"password"}>password</Label>
             <Input
+            ref={passwordRef}
               placeholder="password"
               id="password"
               type="password"
               required
             ></Input>
             <Box sx={{display:'flex',justifyContent:'center'}}>   <input
+            disabled={loading}
               type="submit"
               value={"login"}
               style={{
@@ -74,9 +122,10 @@ export default function Page() {
                 margin:'15px'
               }}
             ></input></Box>
-         
+       
           
         </Box>
+        </form>
       </Box>
     </>
   );

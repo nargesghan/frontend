@@ -6,6 +6,7 @@ import AuthButton from "@/components/authentication/AuthButton";
 import AuthInput from "@/components/authentication/AuthInput";
 import { Typography } from '@mui/material';
 import Link from 'next/link';
+import { useRouter } from "next/navigation";
 
 export default function Page() {
   const imageUrl = "/authentication/signup.svg";
@@ -22,7 +23,7 @@ export default function Page() {
     const email = emailRef.current?.value;
     const password = passwordRef.current?.value;
     const confirmPassword = confirmPasswordRef.current?.value;
-
+ const router=useRouter();
     // TODO: Add validation for email, password, and confirmPassword
 
     const response = await fetch('http://127.0.0.1:8000/users/api/register-recruiter/', {
@@ -36,9 +37,12 @@ export default function Page() {
     const data = await response.json();
 
     if (response.status === 201) {
-      // TODO: Handle successful registration (e.g., redirect to login page)
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('userId', data.userId);
+      localStorage.setItem('userType','employer')
       console.log('Your account has been created successfully.', data);
       setError('')
+      router.replace('/')
     } else {
       // TODO: Handle errors from the API
   
