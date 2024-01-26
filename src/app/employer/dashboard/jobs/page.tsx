@@ -1,13 +1,12 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import SRTable from "@/components/Employer/Allposts";
-import {  Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
 interface Job {
-  title: string;
-  publication: Date; 
-   expirationDate: Date;  
+  id: number;
+  data: { title: string; publication: Date; expirationDate: Date };
 }
 
 interface Props {
@@ -16,26 +15,29 @@ interface Props {
 
 const Page: React.FC<Props> = (props) => {
   const [data, setData] = useState<Job[]>([]);
-  const Token=localStorage.getItem('token');
+  const Token = localStorage.getItem("token");
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/job/api/company-jobs' , {
-      method: 'GET',
+    fetch("http://127.0.0.1:8000/job/api/company-jobs", {
+      method: "GET",
       headers: {
-        Authorization: `Token ${Token}`, 
+        Authorization: `Token ${Token}`,
       },
-    
     })
-    .then(response => response.json())
-    .then(data => {
-      const updatedData = data.map((job: Job) => ({
-        ...job,
-        expirationDate: new Date(new Date(job.publication).setMonth(new Date(job.publication).getMonth() + 2)),  // Add this line
-      }));
-      setData(updatedData);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        const updatedData = data.map((job: Job) => ({
+          ...job,
+          expirationDate: new Date(
+            new Date(job.data.publication).setMonth(
+              new Date(job.data.publication).getMonth() + 2
+            )
+          ), // Add this line
+        }));
+        setData(updatedData);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   }, []);
 
   return (
@@ -48,7 +50,7 @@ const Page: React.FC<Props> = (props) => {
         alignItems: "center",
         justifyContent: "center",
         flexDirection: "column",
-        marginLeft:'100px'
+        marginLeft: "100px",
       }}
     >
       <Box sx={{ width: "100%" }}>
@@ -68,9 +70,8 @@ const Page: React.FC<Props> = (props) => {
         >
           <Typography>All posted ads</Typography>
         </Box>
-        <SRTable data={data}/>
+        <SRTable data={data} />
       </Box>
-
     </Box>
   );
 };

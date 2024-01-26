@@ -10,9 +10,11 @@ import Typography from "@mui/material/Typography";
 import Link from "next/link";
 
 interface Job {
-  title: string;
-  publication: Date;
-  expirationDate: Date;
+  id:number;
+  data:{  title: string;
+    publication: Date;
+    expirationDate: Date;}
+
 }
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -85,7 +87,7 @@ const SRTable: React.FC<SRTableProps> = ({ data }) => {
         <TableBody>
           {data.length != 0
             ? data.map((row) => (
-                <StyledTableRow key={row.title}>
+                <StyledTableRow key={row.data.title}>
                   <StyledTableCell component="th" scope="row">
                     <Typography
                       sx={{
@@ -94,16 +96,16 @@ const SRTable: React.FC<SRTableProps> = ({ data }) => {
                         color: "#101828",
                       }}
                     >
-                      {row.title}
+                      <Link href={`/job/${row.id}`}> {row.data.title}</Link>
                     </Typography>
                   </StyledTableCell>
 
                   <StyledTableCell align="right">
-                    {row.publication.toDateString()}
+                    {row.data.publication.toDateString()}
                   </StyledTableCell>
 
                   <StyledTableCell align="right">
-                    {row.expirationDate.toDateString()}
+                    {row.data.expirationDate.toDateString()}
                   </StyledTableCell>
                 </StyledTableRow>
               ))
@@ -117,7 +119,7 @@ const SRTable: React.FC<SRTableProps> = ({ data }) => {
                         color: "#101828",
                       }}
                     >
-                      <Link href="/employer/dashboard/jobs"> {row.title}</Link>
+                      <Link href={`/job/}`}> {row.title}</Link>
                     </Typography>
                   </StyledTableCell>
 
