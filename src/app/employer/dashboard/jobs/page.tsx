@@ -1,13 +1,35 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import Box from "@mui/material/Box";
 import SRTable from "@/components/Employer/Allposts";
 import { Button, Typography } from "@mui/material";
+
+interface Job {
+  title: string;
+  publication: Date;
+  newApplications: number;  // Assuming new applications is a number
+  expirationDate: Date;  // Assuming expiration date is a string in date format
+}
+
 interface Props {
   // define your props here
 }
 
 const Page: React.FC<Props> = (props) => {
+  const [data, setData] = useState<Job[]>([]);
+  const Token=localStorage.getItem('token');
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/job/api/company-jobs/' + localStorage.getItem('userId'), {
+      method: 'GET',
+    
+    })
+    .then(response => response.json())
+    .then(data => setData(data))
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  }, []);
+
   return (
     <Box
       sx={{
