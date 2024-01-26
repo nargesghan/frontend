@@ -2,13 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import Box from "@mui/material/Box";
 import SRTable from "@/components/Employer/Allposts";
-import { Button, Typography } from "@mui/material";
+import {  Typography } from "@mui/material";
 
 interface Job {
   title: string;
-  publication: Date;
-  newApplications: number;  // Assuming new applications is a number
-  expirationDate: Date;  // Assuming expiration date is a string in date format
+  publication: Date; 
+   expirationDate: Date;  
 }
 
 interface Props {
@@ -19,12 +18,21 @@ const Page: React.FC<Props> = (props) => {
   const [data, setData] = useState<Job[]>([]);
   const Token=localStorage.getItem('token');
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/job/api/company-jobs/' + localStorage.getItem('userId'), {
+    fetch('http://127.0.0.1:8000/job/api/company-jobs' , {
       method: 'GET',
+      headers: {
+        Authorization: `Token ${Token}`, 
+      },
     
     })
     .then(response => response.json())
-    .then(data => setData(data))
+    .then(data => {
+      const updatedData = data.map((job: Job) => ({
+        ...job,
+        expirationDate: new Date(new Date(job.publication).setMonth(new Date(job.publication).getMonth() + 2)),  // Add this line
+      }));
+      setData(updatedData);
+    })
     .catch((error) => {
       console.error('Error:', error);
     });

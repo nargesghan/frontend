@@ -103,7 +103,7 @@ const Page: React.FC<Props> = (props) => {
     const response = await fetch(url, {
       method: "POST",
       headers: {
-        Authorization: `Token ${token}`, // assuming token-based authentication
+        Authorization: `Token ${token}`, 
       },
       body: data,
     });
