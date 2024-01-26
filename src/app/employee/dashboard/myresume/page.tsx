@@ -42,11 +42,10 @@ interface Props {
 }
 
 const Page: React.FC<Props> = (props) => {
-
   const [fileName, setFileName] = useState<string | null>(null);
 
   const nameRef = useRef<HTMLInputElement>(null);
-  const emailRef = useRef<HTMLInputElement>(null);
+
   const phoneRef = useRef<HTMLInputElement>(null);
   const birthDateRef = useRef<HTMLInputElement>(null);
   const locationRef = useRef<HTMLSelectElement>(null);
@@ -57,6 +56,8 @@ const Page: React.FC<Props> = (props) => {
   const educationRef = useRef<HTMLInputElement>(null);
   const licensesRef = useRef<HTMLInputElement>(null);
   const resumeRef = useRef<HTMLInputElement>(null);
+  const ageRef = useRef<HTMLInputElement>(null);
+  const genderRef = useRef<HTMLSelectElement>(null);
 
   const handleFabClick = () => {
     if (fileInputRef.current) {
@@ -73,45 +74,47 @@ const Page: React.FC<Props> = (props) => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const url = 'http://127.0.0.1:8000/resume/api/update-resume/'
-  const token = localStorage.getItem('token'); 
+    const url = "http://127.0.0.1:8000/resume/api/update-resume/";
+    const userId = localStorage.getItem("userId");
 
-  // The data to update the resume
-  const data = new FormData();
-  data.append('name', nameRef.current?.value|| '');
-  data.append('email', emailRef.current?.value|| '');
-  data.append('phone', phoneRef.current?.value|| '');
-  data.append('birthdate', birthDateRef.current?.value|| '');
-  data.append('location', locationRef.current?.value|| '');
-  if (fileInputRef.current?.files && fileInputRef.current.files.length > 0) {
-    data.append('profilephoto', fileInputRef.current.files[0]);
-  }
-  data.append('about',aboutRef.current?.value||'');
-  data.append('skills',skillsRef.current?.value ||'');
-  data.append('experience',experienceRef.current?.value ||'');
-  data.append('education',educationRef.current?.value ||'');
-  data.append('license',licensesRef.current?.value ||'');
+    // The data to update the resume
+    const data = new FormData();
+    data.append("name", nameRef.current?.value || "");
+    data.append("lastName", nameRef.current?.value || "");
+ 
+    data.append("phone_number", phoneRef.current?.value || "");
+    data.append("birthday", birthDateRef.current?.value || "");
+    data.append("location", locationRef.current?.value || "");
+    data.append("age", ageRef.current?.value || "");
+    data.append("gender", genderRef.current?.value || "");
+    if (fileInputRef.current?.files && fileInputRef.current.files.length > 0) {
+      data.append("photo", fileInputRef.current.files[0]);
+    }
+    data.append("about", aboutRef.current?.value || "");
+    data.append("skills", skillsRef.current?.value || "");
+    data.append("experiences", experienceRef.current?.value || "");
+    data.append("education", educationRef.current?.value || "");
+    data.append("certifications", licensesRef.current?.value || "");
 
-  if (resumeRef.current?.files && resumeRef.current.files.length > 0) {
-    data.append('resume', resumeRef.current.files[0]);
-  }
+    if (resumeRef.current?.files && resumeRef.current.files.length > 0) {
+      data.append("upload_resume", resumeRef.current.files[0]);
+    }
 
-  const response = await fetch(url, {
-    method: 'POST',
-    headers: {
-      'Authorization': `Token ${token}`, 
-    },
-    body: data,
-  });
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        id:`${userId}`,
+      },
+      body: data,
+    });
 
-  if (!response.ok) {
-    // Handle error...
-    console.error('Error:', response.statusText);
-  } else {
-    const responseData = await response.json();
-    console.log(responseData);
-  }
-  
+    if (!response.ok) {
+      // Handle error...
+      console.error("Error:", response.statusText);
+    } else {
+      const responseData = await response.json();
+      console.log(responseData);
+    }
   };
 
   return (
@@ -136,7 +139,7 @@ const Page: React.FC<Props> = (props) => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              height: "700px",
+              height: "900px",
               borderColor: "#0EC5D7",
               padding: "15px",
             }}
@@ -146,32 +149,57 @@ const Page: React.FC<Props> = (props) => {
             <Stack spacing={"10px"}>
               <Label htmlFor={"name"}>Name*</Label>
               <Input
-              ref={nameRef}
+                ref={nameRef}
                 placeholder="Full name*"
                 id="name"
                 type="text"
                 required
               ></Input>
-              <Label htmlFor="email">Email address*</Label>
-              <Input
-              ref={emailRef}
-                placeholder="example@gmail.com"
-                id="email"
-                type="email"
-                required
-              ></Input>
+       
               <Label htmlFor="phone">Phone number</Label>
-              <Input ref={phoneRef} placeholder="09119392284" id="phone" type="text"></Input>
+              <Input
+                ref={phoneRef}
+                placeholder="09119392284"
+                id="phone"
+                type="text"
+              ></Input>
               <Label htmlFor="birthdate">Birth date</Label>
               <Input
-              ref={birthDateRef}
+                ref={birthDateRef}
                 placeholder="Please select"
                 id="birthdate"
                 type="date"
               ></Input>
+              <Label htmlFor="age">age</Label>
+              <Input
+                ref={ageRef}
+                placeholder="21"
+                id="age"
+                type="number"
+                required
+              ></Input>
+              <Label htmlFor="gender">gender</Label>
+              <select
+                ref={genderRef}
+                name="gender"
+                id="gender"
+                style={{
+                  width: "507px",
+                  height: "50px",
+                  paddingLeft: "20px",
+                  borderRadius: "5px",
+                  backgroundColor: "#F9F9F9",
+                  border: "solid",
+                  borderWidth: "1px",
+                  borderColor: "#E6E6E6",
+                }}
+              >
+                <option value={0}>woman</option>
+                <option value={1}>man</option>
+              </select>
               <Label htmlFor="location">Location</Label>
               <select
-              ref={locationRef}
+                ref={locationRef}
                 name="location"
                 id="location"
                 style={{
@@ -271,7 +299,7 @@ const Page: React.FC<Props> = (props) => {
               about
             </Label>
             <textarea
-            ref={aboutRef}
+              ref={aboutRef}
               placeholder={"write something about yourself"}
               id="about"
               name="about"
@@ -304,7 +332,7 @@ const Page: React.FC<Props> = (props) => {
               skill
             </Label>
             <Input
-            ref={skillsRef}
+              ref={skillsRef}
               placeholder="skill"
               id="skill"
               name="skill"
@@ -328,7 +356,7 @@ const Page: React.FC<Props> = (props) => {
               experience
             </Label>
             <Input
-            ref={experienceRef}
+              ref={experienceRef}
               placeholder="experience"
               id="experience"
               name="experience"
@@ -352,7 +380,7 @@ const Page: React.FC<Props> = (props) => {
               education
             </Label>
             <Input
-            ref={educationRef}
+              ref={educationRef}
               placeholder="education"
               id="education"
               name="education"
@@ -376,7 +404,7 @@ const Page: React.FC<Props> = (props) => {
               certificates
             </Label>
             <Input
-            ref={licensesRef}
+              ref={licensesRef}
               placeholder="certificates"
               id="certificates"
               name="certificates"
@@ -400,7 +428,7 @@ const Page: React.FC<Props> = (props) => {
               resume
             </Label>
             <Input
-            ref={resumeRef}
+              ref={resumeRef}
               placeholder="resume"
               id="resume"
               name="resume"
