@@ -71,7 +71,7 @@ export default function ButtonAppBar() {
             JobJob
           </Typography>
           <Typography sx={{ pr: 3 }} variant="body2">
-            Mahi Ghermez
+            Dashboard
           </Typography>
           <Box sx={{ position: "static" }}>
             <Button onClick={handleAvatarClick}>
@@ -83,7 +83,7 @@ export default function ButtonAppBar() {
                   marginRight: 10,
                 }}
               >
-                MG
+                EM
               </Avatar>
             </Button>
 
