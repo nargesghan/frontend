@@ -60,7 +60,7 @@ const Page: React.FC<Props> = (props) => {
         >
           <Typography>All posted ads</Typography>
         </Box>
-        <SRTable />
+        <SRTable data={data}/>
       </Box>
 
     </Box>

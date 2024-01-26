@@ -8,6 +8,13 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 
+interface Job {
+  title: string;
+  publication: Date;
+  newApplications: number;
+  expirationDate: Date;
+}
+
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -29,16 +36,15 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 function createData(
   title: string,
-  publicationDate: Date,
+  publication: Date,
   expirationDate: Date,
-
-  numberOfUnread: number
+  newApplications: number
 ) {
   return {
     title,
-    publicationDate,
+    publication,
     expirationDate,
-    numberOfUnread,
+    newApplications,
   };
 }
 
@@ -80,8 +86,11 @@ const rows = [
     7
   ),
 ];
+interface SRTableProps {
+  data: Job[];
+}
 
-export default function SRTable() {
+const  SRTable:React.FC<SRTableProps> = ({ data }) => {
   return (
     <TableContainer
       component={Paper}
@@ -104,7 +113,7 @@ export default function SRTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {data.length!=0?data.map((row) => (
             <StyledTableRow key={row.title}>
               <StyledTableCell component="th" scope="row">
                 <Typography
@@ -115,11 +124,34 @@ export default function SRTable() {
               </StyledTableCell>
 
               <StyledTableCell align="right">
-                {row.publicationDate.toDateString()}
+                {row.publication.toDateString()}
               </StyledTableCell>
               <StyledTableCell align="right">
-                {row.numberOfUnread != 0
-                  ? `${row.numberOfUnread} new applications`
+                {row.newApplications != 0
+                  ? `${row.newApplications} new applications`
+                  : "ther is no new application"}
+              </StyledTableCell>
+              <StyledTableCell align="right">
+                {row.expirationDate.toDateString()}
+              </StyledTableCell>
+            </StyledTableRow>
+          )):
+          rows.map((row) => (
+            <StyledTableRow key={row.title}>
+              <StyledTableCell component="th" scope="row">
+                <Typography
+                  sx={{ fontSize: "14px", fontWeight: "300", color: "#101828" }}
+                >
+                  {row.title}
+                </Typography>
+              </StyledTableCell>
+
+              <StyledTableCell align="right">
+                {row.publication.toDateString()}
+              </StyledTableCell>
+              <StyledTableCell align="right">
+                {row.newApplications != 0
+                  ? `${row.newApplications} new applications`
                   : "ther is no new application"}
               </StyledTableCell>
               <StyledTableCell align="right">
@@ -127,8 +159,11 @@ export default function SRTable() {
               </StyledTableCell>
             </StyledTableRow>
           ))}
+        
         </TableBody>
       </Table>
     </TableContainer>
   );
 }
+
+export default SRTable;
