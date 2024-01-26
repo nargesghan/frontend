@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/system";
 import Stack from "@mui/material/Stack";
@@ -30,9 +30,14 @@ interface Props {
 }
 
 const Page: React.FC<Props> = (props) => {
-  const fileInputRef = React.useRef<HTMLInputElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [fileName, setFileName] = useState<string | null>(null);
-
+  const locationRef = useRef<HTMLSelectElement>(null);
+  const sizeRef = useRef<HTMLSelectElement>(null);
+  const nameRef = useRef<HTMLInputElement>(null);
+  const industryRef = useRef<HTMLSelectElement>(null);
+  const websiteRef = useRef<HTMLInputElement>(null);
+  const aboutRef = useRef<HTMLTextAreaElement>(null);
   const handleFabClick = () => {
     if (fileInputRef.current) {
       fileInputRef.current.click();
@@ -44,9 +49,52 @@ const Page: React.FC<Props> = (props) => {
       setFileName(event.target.files[0].name);
     }
   };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const url = "http://127.0.0.1:8000/company/api/update-company/";
+    const token = localStorage.getItem("token");
+
+    // The data to update the resume
+    const data = new FormData();
+
+    data.append("name", nameRef.current?.value || "");
+    data.append("industry", industryRef.current?.value || "");
+    data.append("website", websiteRef.current?.value || "");
+    data.append("about", aboutRef.current?.value || "");
+    data.append("location", locationRef.current?.value || "");
+    data.append("size", sizeRef.current?.value || "");
+    if (fileInputRef.current?.files && fileInputRef.current.files.length > 0) {
+      data.append("logo", fileInputRef.current.files[0]);
+    }
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        Authorization: `Token ${token}`, // assuming token-based authentication
+      },
+      body: data,
+    });
+
+    if (!response.ok) {
+      // Handle error...
+      console.error("Error:", response.statusText);
+    } else {
+      const responseData = await response.json();
+      console.log(responseData);
+    }
+  };
+
   return (
     <Box sx={{ marginTop: "200px", display: "flex", flexDirection: "row" }}>
-      <Box sx={{display:'flex',justifyContent:'center',alignItems:'center',width:'50%'}}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "50%",
+        }}
+      >
         <Image
           src="/General/employerAuthbackground.jpg"
           alt="employer vector"
@@ -68,32 +116,28 @@ const Page: React.FC<Props> = (props) => {
           padding: "15px",
         }}
       >
-        <form>
+        <form onSubmit={handleSubmit}>
           <Stack spacing={"10px"}>
             <Label htmlFor={"name"}>Name*</Label>
             <Input
-              placeholder="Full name*"
+              ref={nameRef}
+              placeholder="company name*"
               id="name"
               type="text"
               required
             ></Input>
-            <Label htmlFor="email">Email address*</Label>
-            <Input
-              placeholder="example@gmail.com"
-              id="email"
-              type="email"
-              required
-            ></Input>
-            <Label htmlFor="phone">Phone number</Label>
+
+            {/* <Label htmlFor="phone">Phone number</Label>
             <Input placeholder="09119392284" id="phone" type="text"></Input>
             <Label htmlFor="birthdate">Birth date</Label>
             <Input
               placeholder="Please select"
               id="birthdate"
               type="date"
-            ></Input>
+            ></Input> */}
             <Label htmlFor="companySize">Company Size</Label>
             <select
+              ref={sizeRef}
               name="companySize"
               id="companySize"
               style={{
@@ -107,16 +151,17 @@ const Page: React.FC<Props> = (props) => {
                 borderColor: "#E6E6E6",
               }}
             >
-              <option value="1">--Please choose an option--</option>
-              <option value="2">less than 10</option>
-              <option value="3">10-20</option>
-              <option value="4">20-50</option>
-              <option value="5">50-100</option>
-              <option value="6">more than 100</option>
+              <option value="">--Please choose an option--</option>
+              <option value="-10">Less than 10</option>
+              <option value="10-50">10-50 employees</option>
+              <option value="50-200">50-200 employees</option>
+              <option value="200-500">200-500 employees</option>
+              <option value="500+">More than 500</option>
             </select>
 
             <Label htmlFor="location">Province</Label>
             <select
+              ref={locationRef}
               name="location"
               id="location"
               style={{
@@ -131,48 +176,23 @@ const Page: React.FC<Props> = (props) => {
               }}
             >
               <option value="">--Please choose an option--</option>
-              <option value="Alborz">Alborz</option>
-              <option value="Ardabil">Ardabil</option>
-              <option value="East Azerbaijan">East Azerbaijan</option>
-              <option value="West Azerbaijan">West Azerbaijan</option>
-              <option value="Bushehr">Bushehr</option>
-              <option value="Chahar Mahaal and Bakhtiari">
-                Chahar Mahaal and Bakhtiari
-              </option>
-              <option value="Fars">Fars</option>
-              <option value="Gilan">Gilan</option>
-              <option value="Golestan">Golestan</option>
-              <option value="Hamadan">Hamadan</option>
-              <option value="Hormozgan">Hormozgan</option>
-              <option value="Ilam">Ilam</option>
-              <option value="Isfahan">Isfahan</option>
-              <option value="Kerman">Kerman</option>
-              <option value="Kermanshah">Kermanshah</option>
-              <option value="North Khorasan">North Khorasan</option>
-              <option value="Razavi Khorasan">Razavi Khorasan</option>
-              <option value="South Khorasan">South Khorasan</option>
-              <option value="Khuzestan">Khuzestan</option>
-              <option value="Kohgiluyeh and Boyer-Ahmad">
-                Kohgiluyeh and Boyer-Ahmad
-              </option>
-              <option value="Kurdistan">Kurdistan</option>
-              <option value="Lorestan">Lorestan</option>
-              <option value="Markazi">Markazi</option>
-              <option value="Mazandaran">Mazandaran</option>
-              <option value="Qazvin">Qazvin</option>
-              <option value="Qom">Qom</option>
-              <option value="Semnan">Semnan</option>
-              <option value="Sistan and Baluchestan">
-                Sistan and Baluchestan
-              </option>
+              <option value="Esfahan">Isfahan</option>
+
+              <option value="Shiraz">Shiraz</option>
               <option value="Tehran">Tehran</option>
-              <option value="Yazd">Yazd</option>
-              <option value="Zanjan">Zanjan</option>
+              <option value="Mashhad">Mashhad</option>
+              <option value="Tabriz">Tabriz</option>
             </select>
             <Label htmlFor="website">Website</Label>
-            <Input placeholder="website" id="website" type="text"></Input>
+            <Input
+              ref={websiteRef}
+              placeholder="website"
+              id="website"
+              type="text"
+            ></Input>
             <Label htmlFor="industry">Industry</Label>
             <select
+              ref={industryRef}
               name="industry"
               id="industry"
               style={{
@@ -197,6 +217,7 @@ const Page: React.FC<Props> = (props) => {
             </select>
             <Label htmlFor="about">about</Label>
             <textarea
+              ref={aboutRef}
               placeholder={"about the company"}
               id="about"
               name="about"
@@ -242,7 +263,6 @@ const Page: React.FC<Props> = (props) => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-           
             }}
           >
             {" "}
@@ -255,7 +275,6 @@ const Page: React.FC<Props> = (props) => {
                 backgroundColor: "#0EC5D7",
                 border: "none",
                 color: "#FFFFFF",
-                
               }}
             ></input>
           </Box>
