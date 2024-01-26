@@ -4,11 +4,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Paper from "@mui/material/Paper";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Typography from "@mui/material/Typography";
-import ArrowCircleUpIcon from "@mui/icons-material/ArrowCircleUp";
-import PersonIcon from "@mui/icons-material/Person";
 import WorkIcon from "@mui/icons-material/Work";
-import InterestsIcon from "@mui/icons-material/Interests";
-import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import ModeEditOutlineIcon from '@mui/icons-material/ModeEditOutline';
@@ -19,7 +15,7 @@ export default function TypographyMenu() {
   return (
     <Paper  sx={{ width:'200px', bgcolor: "info.light",display:'flex',justifyContent:'center',position:'absolute',right:'10px',top:'70px' }}>
       <MenuList>
-      <Link href="/employer/dashboard/viewjobs">
+      <Link href="/employer/dashboard/jobs">
         <MenuItem>
           <ListItemIcon>
           <WorkIcon fontSize="small" />
@@ -27,7 +23,7 @@ export default function TypographyMenu() {
           <Typography variant="body2">view all jobs</Typography>
         </MenuItem>
         </Link>
-      <Link href="/employee/dashboard/post">
+      <Link href="/employer/dashboard/addnewad">
         <MenuItem>
           <ListItemIcon>
             <CloudUploadIcon fontSize="small" />
@@ -35,7 +31,7 @@ export default function TypographyMenu() {
           <Typography variant="body2">post a new job</Typography>
         </MenuItem>
         </Link>
-      <Link href="/employee/edit">
+      <Link href="/employer/dashboard/editcompany">
         <MenuItem>
           <ListItemIcon>
             <ModeEditOutlineIcon fontSize="small" />
@@ -46,16 +42,7 @@ export default function TypographyMenu() {
         </MenuItem>
         </Link>
       
-      <Link href="/employee/dashboard/settings">
-        <MenuItem>
-          <ListItemIcon>
-            <SettingsIcon fontSize="small"/>
-          </ListItemIcon>
-          <Typography variant="body2" noWrap>
-          Settings
-          </Typography>
-        </MenuItem>
-        </Link>
+   
         <MenuItem>
           <ListItemIcon>
             <LogoutIcon fontSize="small"/>

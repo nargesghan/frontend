@@ -60,7 +60,7 @@ export default function Page() {
     localStorage.setItem('userType','employer');
       console.log('You are loged in successfully.', data);
       setError('')
-      router.replace('/')
+      router.replace('/employer/dashboard/jobs')
     } else {
       // TODO: Handle errors from the API
   

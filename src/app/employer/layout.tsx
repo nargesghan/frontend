@@ -1,4 +1,4 @@
-// import ButtonAppBar from "@/components/General/EmployerNavbar"
+'use client'
 import ButtonAppBar from "@/components/Employer/EmployerAuthNavbar"
 import withAuth from "../utils/withAuthEmployer"
 function EmployerLayout({

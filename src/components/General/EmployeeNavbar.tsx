@@ -64,7 +64,7 @@ export default function ButtonAppBar() {
           >
             JobJob
           </Typography>
-          <Link href="/employer">
+          <Link href="/authentication/employer/signup">
           <Button color="inherit">Employers/Post Job</Button>
           </Link>
           <Link href="/authentication/employee/login">

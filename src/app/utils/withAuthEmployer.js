@@ -1,23 +1,18 @@
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
-
-const withAuth = WrappedComponent => {
+const withAuth = (WrappedComponent) => {
   return (props) => {
-    const router = useRouter();
-    const token = localStorage.getItem('token');
-    const userType=localStorage.getItem('userType')
-    if (!token || userType!='employer') {
-      router.replace('/authentication/employer/login');
-      return null;
-    }
+    const Router = useRouter();
 
-    // try {
-    //   jwt.verify(token, 'YOUR_SECRET_KEY');
-    // } catch (err) {
-    //   localStorage.removeItem('token');
-    //   router.push('/login');
-    //   return null;
-    // }
+    useEffect(() => {
+      const token = localStorage.getItem('token');
+      const userType = localStorage.getItem('userType');
+
+      if (!token || userType !== 'employer') {
+        Router.replace('/authentication/employer/login');
+      }
+    }, []);
 
     return <WrappedComponent {...props} />;
   };

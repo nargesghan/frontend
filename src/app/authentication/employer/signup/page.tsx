@@ -15,7 +15,7 @@ export default function Page() {
   const confirmPasswordRef = useRef<HTMLInputElement>(null);
   const [loading, setLoading] = useState(false);
   const [error,setError]=useState('');
-
+  const router=useRouter();
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setLoading(true);
@@ -23,7 +23,7 @@ export default function Page() {
     const email = emailRef.current?.value;
     const password = passwordRef.current?.value;
     const confirmPassword = confirmPasswordRef.current?.value;
- const router=useRouter();
+
     // TODO: Add validation for email, password, and confirmPassword
 
     const response = await fetch('http://127.0.0.1:8000/users/api/register-recruiter/', {
@@ -42,7 +42,7 @@ export default function Page() {
       localStorage.setItem('userType','employer')
       console.log('Your account has been created successfully.', data);
       setError('')
-      router.replace('/')
+      router.replace('/employer/dashboard/jobs')
     } else {
       // TODO: Handle errors from the API
   
