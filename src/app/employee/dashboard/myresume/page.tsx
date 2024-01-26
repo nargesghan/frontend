@@ -45,7 +45,7 @@ const Page: React.FC<Props> = (props) => {
   const [fileName, setFileName] = useState<string | null>(null);
 
   const nameRef = useRef<HTMLInputElement>(null);
-
+  const lastnameRef= useRef<HTMLInputElement>(null);
   const phoneRef = useRef<HTMLInputElement>(null);
   const birthDateRef = useRef<HTMLInputElement>(null);
   const locationRef = useRef<HTMLSelectElement>(null);
@@ -75,13 +75,13 @@ const Page: React.FC<Props> = (props) => {
     event.preventDefault();
 
     const url = "http://127.0.0.1:8000/resume/api/update-resume/";
-    const userId = localStorage.getItem("userId");
+    const token = localStorage.getItem("token");
 
     // The data to update the resume
     const data = new FormData();
     data.append("name", nameRef.current?.value || "");
-    data.append("lastName", nameRef.current?.value || "");
- 
+    data.append("lastName", lastnameRef.current?.value || "");
+
     data.append("phone_number", phoneRef.current?.value || "");
     data.append("birthday", birthDateRef.current?.value || "");
     data.append("location", locationRef.current?.value || "");
@@ -103,10 +103,11 @@ const Page: React.FC<Props> = (props) => {
     const response = await fetch(url, {
       method: "POST",
       headers: {
-        id:`${userId}`,
+        Authorization: `Token ${token}`, // assuming token-based authentication
       },
       body: data,
     });
+   
 
     if (!response.ok) {
       // Handle error...
@@ -147,15 +148,22 @@ const Page: React.FC<Props> = (props) => {
             <PersonIcon sx={{ color: "#0EC5D7" }} fontSize="large" />
             <Title>Personal information</Title>
             <Stack spacing={"10px"}>
-              <Label htmlFor={"name"}>Name*</Label>
+              <Label htmlFor={"name"}> first Name*</Label>
               <Input
                 ref={nameRef}
-                placeholder="Full name*"
+                placeholder="first name*"
                 id="name"
                 type="text"
                 required
               ></Input>
-       
+    <Label htmlFor={"lastname"}> last Name*</Label>
+              <Input
+                ref={lastnameRef}
+                placeholder="last name*"
+                id="lastname"
+                type="text"
+                required
+              ></Input>
               <Label htmlFor="phone">Phone number</Label>
               <Input
                 ref={phoneRef}
@@ -194,8 +202,8 @@ const Page: React.FC<Props> = (props) => {
                   borderColor: "#E6E6E6",
                 }}
               >
-                <option value={0}>woman</option>
-                <option value={1}>man</option>
+                <option value={"Male"}>male</option>
+                <option value={"Female"}>female</option>
               </select>
               <Label htmlFor="location">Location</Label>
               <select
@@ -214,43 +222,13 @@ const Page: React.FC<Props> = (props) => {
                 }}
               >
                 <option value="">--Please choose an option--</option>
-                <option value="Alborz">Alborz</option>
-                <option value="Ardabil">Ardabil</option>
-                <option value="East Azerbaijan">East Azerbaijan</option>
-                <option value="West Azerbaijan">West Azerbaijan</option>
-                <option value="Bushehr">Bushehr</option>
-                <option value="Chahar Mahaal and Bakhtiari">
-                  Chahar Mahaal and Bakhtiari
-                </option>
-                <option value="Fars">Fars</option>
-                <option value="Gilan">Gilan</option>
-                <option value="Golestan">Golestan</option>
-                <option value="Hamadan">Hamadan</option>
-                <option value="Hormozgan">Hormozgan</option>
-                <option value="Ilam">Ilam</option>
-                <option value="Isfahan">Isfahan</option>
-                <option value="Kerman">Kerman</option>
-                <option value="Kermanshah">Kermanshah</option>
-                <option value="North Khorasan">North Khorasan</option>
-                <option value="Razavi Khorasan">Razavi Khorasan</option>
-                <option value="South Khorasan">South Khorasan</option>
-                <option value="Khuzestan">Khuzestan</option>
-                <option value="Kohgiluyeh and Boyer-Ahmad">
-                  Kohgiluyeh and Boyer-Ahmad
-                </option>
-                <option value="Kurdistan">Kurdistan</option>
-                <option value="Lorestan">Lorestan</option>
-                <option value="Markazi">Markazi</option>
-                <option value="Mazandaran">Mazandaran</option>
-                <option value="Qazvin">Qazvin</option>
-                <option value="Qom">Qom</option>
-                <option value="Semnan">Semnan</option>
-                <option value="Sistan and Baluchestan">
-                  Sistan and Baluchestan
-                </option>
+
+                <option value="Esfahan">Isfahan</option>
+
+                <option value="Shiraz">Shiraz</option>
                 <option value="Tehran">Tehran</option>
-                <option value="Yazd">Yazd</option>
-                <option value="Zanjan">Zanjan</option>
+                <option value="Mashhad">Mashhad</option>
+                <option value="Tabriz">Tabriz</option>
               </select>
               <Label htmlFor="profilephoto" style={{ display: "block" }}>
                 Profile photo
