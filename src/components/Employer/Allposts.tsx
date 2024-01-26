@@ -117,7 +117,7 @@ const SRTable: React.FC<SRTableProps> = ({ data }) => {
                         color: "#101828",
                       }}
                     >
-                      <Link href="/employee/dashboard/jobs"> {row.title}</Link>
+                      <Link href="/employer/dashboard/jobs"> {row.title}</Link>
                     </Typography>
                   </StyledTableCell>
 
