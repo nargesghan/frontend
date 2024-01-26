@@ -1,7 +1,8 @@
 "use client";
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { Box, Typography,Grid } from "@mui/material";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Image from "next/image";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
