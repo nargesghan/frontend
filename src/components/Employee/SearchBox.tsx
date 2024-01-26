@@ -7,18 +7,31 @@ import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import SearchIcon from "@mui/icons-material/Search";
-import TextField from '@mui/material/TextField';
+import TextField from "@mui/material/TextField";
+import { useRouter } from "next/navigation";
 
 interface Props {
   // define your props here
 }
 
 const SearchBox: React.FC<Props> = (props) => {
-    const [category, setCategory] = React.useState('');
+  const [Location, setLocation] = React.useState("");
+  const [title, setTitle] = React.useState("");
+  
+  const router=useRouter();
 
-    const handleChange = (event: SelectChangeEvent) => {
-      setCategory(event.target.value);
-    };
+  const handleChange = (event: SelectChangeEvent) => {
+    setLocation(event.target.value);
+  };
+
+  const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(event.target.value);
+  };
+
+  const handleSearch = async () => {
+    router.push(`/search-results?title=${title}&location=${Location}`);
+  };
+
   return (
     <Box
       sx={{
@@ -26,46 +39,51 @@ const SearchBox: React.FC<Props> = (props) => {
         height: "206px",
         display: "flex",
         justifyContent: "center",
-        alignItems:'center',
-        flexDirection:'column',
-        bgcolor:'secondary.light',
-        marginTop:'40px'
+        alignItems: "center",
+        flexDirection: "column",
+        bgcolor: "secondary.light",
+        marginTop: "40px",
       }}
     >
       <Typography variant="h2" sx={{}}>
         Search Jobs
-        </Typography>
-        <form>
+      </Typography>
+      <form>
         <Stack direction="row" spacing={0}>
           <TextField
             id="outlined-basic"
             label="Search job title"
             variant="outlined"
-            sx={{ borderRadius: 0 ,bgcolor:'#F9F9F9'}}
+            sx={{ borderRadius: 0, bgcolor: "#F9F9F9" }}
+            onChange={handleTitleChange}
           />
           <FormControl sx={{ minWidth: 120 }}>
             <Select
-              value={category}
+              value={Location}
               onChange={handleChange}
               displayEmpty
-              sx={{ borderRadius: 0,bgcolor:'#F9F9F9' }}
+              sx={{ borderRadius: 0, bgcolor: "#F9F9F9" }}
             >
               <MenuItem value="">
-                <em>Category</em>
+                <em>Location</em>
               </MenuItem>
-              <MenuItem value={10}>category 1</MenuItem>
-              <MenuItem value={20}>category 2</MenuItem>
-              <MenuItem value={30}>category 3</MenuItem>
+
+              <MenuItem value="Esfahan">Isfahan</MenuItem>
+
+              <MenuItem value="Shiraz">Shiraz</MenuItem>
+              <MenuItem value="Tehran">Tehran</MenuItem>
+              <MenuItem value="Mashhad">Mashhad</MenuItem>
+              <MenuItem value="Tabriz">Tabriz</MenuItem>
             </Select>
           </FormControl>
           <Button
             variant="contained"
             startIcon={<SearchIcon sx={{ fontSize: 100 }} />}
             sx={{ borderRadius: 0, boxShadow: "none" }}
+            onClick={handleSearch}
           ></Button>
         </Stack>
-        </form>
-      
+      </form>
     </Box>
   );
 };
