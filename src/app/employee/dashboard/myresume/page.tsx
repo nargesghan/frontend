@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/system";
 import Stack from "@mui/material/Stack";
@@ -42,8 +42,21 @@ interface Props {
 }
 
 const Page: React.FC<Props> = (props) => {
-  const fileInputRef = React.useRef<HTMLInputElement>(null);
+
   const [fileName, setFileName] = useState<string | null>(null);
+
+  const nameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const phoneRef = useRef<HTMLInputElement>(null);
+  const birthDateRef = useRef<HTMLInputElement>(null);
+  const locationRef = useRef<HTMLSelectElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const aboutRef = useRef<HTMLTextAreaElement>(null);
+  const skillsRef = useRef<HTMLInputElement>(null);
+  const experienceRef = useRef<HTMLInputElement>(null);
+  const educationRef = useRef<HTMLInputElement>(null);
+  const licensesRef = useRef<HTMLInputElement>(null);
+  const resumeRef = useRef<HTMLInputElement>(null);
 
   const handleFabClick = () => {
     if (fileInputRef.current) {
@@ -55,6 +68,50 @@ const Page: React.FC<Props> = (props) => {
     if (event.target.files && event.target.files.length > 0) {
       setFileName(event.target.files[0].name);
     }
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const url = 'http://127.0.0.1:8000/resume/api/update-resume/'
+  const token = localStorage.getItem('token'); 
+
+  // The data to update the resume
+  const data = new FormData();
+  data.append('name', nameRef.current?.value|| '');
+  data.append('email', emailRef.current?.value|| '');
+  data.append('phone', phoneRef.current?.value|| '');
+  data.append('birthdate', birthDateRef.current?.value|| '');
+  data.append('location', locationRef.current?.value|| '');
+  if (fileInputRef.current?.files && fileInputRef.current.files.length > 0) {
+    data.append('profilephoto', fileInputRef.current.files[0]);
+  }
+  data.append('about',aboutRef.current?.value||'');
+  data.append('skills',skillsRef.current?.value ||'');
+  data.append('experience',experienceRef.current?.value ||'');
+  data.append('education',educationRef.current?.value ||'');
+  data.append('license',licensesRef.current?.value ||'');
+
+  if (resumeRef.current?.files && resumeRef.current.files.length > 0) {
+    data.append('resume', resumeRef.current.files[0]);
+  }
+
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Token ${token}`, 
+    },
+    body: data,
+  });
+
+  if (!response.ok) {
+    // Handle error...
+    console.error('Error:', response.statusText);
+  } else {
+    const responseData = await response.json();
+    console.log(responseData);
+  }
+  
   };
 
   return (
@@ -70,7 +127,7 @@ const Page: React.FC<Props> = (props) => {
         flexDirection: "column",
       }}
     >
-      <form>
+      <form onSubmit={handleSubmit}>
         <Stack spacing={"19px"}>
           <Box
             sx={{
@@ -89,6 +146,7 @@ const Page: React.FC<Props> = (props) => {
             <Stack spacing={"10px"}>
               <Label htmlFor={"name"}>Name*</Label>
               <Input
+              ref={nameRef}
                 placeholder="Full name*"
                 id="name"
                 type="text"
@@ -96,21 +154,24 @@ const Page: React.FC<Props> = (props) => {
               ></Input>
               <Label htmlFor="email">Email address*</Label>
               <Input
+              ref={emailRef}
                 placeholder="example@gmail.com"
                 id="email"
                 type="email"
                 required
               ></Input>
               <Label htmlFor="phone">Phone number</Label>
-              <Input placeholder="09119392284" id="phone" type="text"></Input>
+              <Input ref={phoneRef} placeholder="09119392284" id="phone" type="text"></Input>
               <Label htmlFor="birthdate">Birth date</Label>
               <Input
+              ref={birthDateRef}
                 placeholder="Please select"
                 id="birthdate"
                 type="date"
               ></Input>
               <Label htmlFor="location">Location</Label>
               <select
+              ref={locationRef}
                 name="location"
                 id="location"
                 style={{
@@ -210,6 +271,7 @@ const Page: React.FC<Props> = (props) => {
               about
             </Label>
             <textarea
+            ref={aboutRef}
               placeholder={"write something about yourself"}
               id="about"
               name="about"
@@ -242,6 +304,7 @@ const Page: React.FC<Props> = (props) => {
               skill
             </Label>
             <Input
+            ref={skillsRef}
               placeholder="skill"
               id="skill"
               name="skill"
@@ -265,6 +328,7 @@ const Page: React.FC<Props> = (props) => {
               experience
             </Label>
             <Input
+            ref={experienceRef}
               placeholder="experience"
               id="experience"
               name="experience"
@@ -288,6 +352,7 @@ const Page: React.FC<Props> = (props) => {
               education
             </Label>
             <Input
+            ref={educationRef}
               placeholder="education"
               id="education"
               name="education"
@@ -311,6 +376,7 @@ const Page: React.FC<Props> = (props) => {
               certificates
             </Label>
             <Input
+            ref={licensesRef}
               placeholder="certificates"
               id="certificates"
               name="certificates"
@@ -334,10 +400,11 @@ const Page: React.FC<Props> = (props) => {
               resume
             </Label>
             <Input
+            ref={resumeRef}
               placeholder="resume"
               id="resume"
               name="resume"
-              type="text"
+              type="file"
             ></Input>
           </Box>
           <Box
