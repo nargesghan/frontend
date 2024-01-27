@@ -4,7 +4,7 @@ import { AddToFavorites, SendResume, Share } from "./Buttons";
 import Image from "next/image";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import { Truculenta } from "next/font/google";
+import Stack from "@mui/material/Stack";
 
 interface Props {
   imageURL: string;
@@ -22,6 +22,8 @@ const Jobheader: React.FC<Props> = ({
   location,
   website,
 }) => {
+
+  const token=localStorage.getItem('token')
   return (
     <Grid
       container
@@ -66,8 +68,10 @@ const Jobheader: React.FC<Props> = ({
         <a href={`https://${website}`}><Typography color='#7CBDFA'>{website}</Typography></a>
       </Grid>
       <Grid item xs={3}>
-        <SendResume sentResume={false}/>
-        <AddToFavorites liked={true} />
+      {token?(  <Stack spacing={2}>
+      <SendResume sentResume={false} />
+      <AddToFavorites liked={true}/>
+      </Stack>):<></>}
       </Grid>
       <Grid item xs={2}>
         <Share />
