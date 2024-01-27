@@ -1,14 +1,15 @@
 'use client'
-import React from "react";
+import React, { useState } from 'react';
 import Button from "@mui/material/Button";
 import ShareIcon from "@mui/icons-material/Share";
 import BookmarkAddedIcon from "@mui/icons-material/BookmarkAdded";
-import { useState } from "react";
+
 interface SendResumeProps {
   sentResume: boolean;
 }
 
 export const SendResume: React.FC<SendResumeProps> = ({ sentResume }) => {
+  
   return (
     <>
       {sentResume ? (
@@ -51,8 +52,21 @@ export const AddToFavorites: React.FC<AddToFavoritesProps> = ({ liked }) => {
 interface ShareProps {}
 
 export const Share: React.FC<ShareProps> = (props) => {
+  const [isClicked, setIsClicked] = useState(false);
+  const copyToClipboard = async () => {
+    try {
+      
+      await navigator.clipboard.writeText(window.location.href);
+      console.log('Page URL copied to clipboard');
+      setIsClicked(true);
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+    }
+  };
+
   return (
     <Button
+    onClick={copyToClipboard}
       variant="contained"
       sx={{
         borderRadius: "50%",
@@ -65,7 +79,7 @@ export const Share: React.FC<ShareProps> = (props) => {
       }}
       color="info"
     >
-      <ShareIcon fontSize="small"/>
+     {isClicked ? 'Copied!' : <ShareIcon fontSize="small"/>}
     </Button>
   );
 };
