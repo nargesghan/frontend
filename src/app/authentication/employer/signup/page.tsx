@@ -8,6 +8,28 @@ import { Typography } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import ButtonAppBar from "@/components/General/EmployerNavbar";
+import { styled } from "@mui/system";
+
+const imageUrl = "/authentication/login.svg";
+
+const Input = styled("input")({
+  width: "507px",
+  height: "50px",
+  padding: "20px",
+  borderRadius: "5px",
+  backgroundColor: "#F9F9F9",
+  border: "solid",
+  borderWidth: "1px",
+  borderColor: "#E6E6E6",
+});
+
+const Label = styled("label")({
+  height: "24px",
+  fontSize: "14px",
+  color: "#252B42",
+  fontWeight: 500,
+  display: "block",
+});
 
 export default function Page() {
   const imageUrl = "/authentication/signup.svg";
@@ -65,75 +87,74 @@ export default function Page() {
       <ButtonAppBar />
       <Box
         sx={{
-          width: "100vw",
+          backgroundImage: `url(/General/employerAuthbackground.jpg)`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          opacity: "0.5",
           height: "100vh",
           display: "flex",
-          justifyContent: "center",
           alignItems: "center",
+          justifyContent: "center",
         }}
       >
-        <Grid
-          container
-          justifyContent={"center"}
-          alignItems="center"
-          direction="column"
-          spacing={4}
-          sx={{
-            backgroundImage: `url(${imageUrl})`,
-            height: "80%",
-            width: "80%",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "contain",
-            backgroundPosition: "center",
-          }}
-        >
-          <form onSubmit={handleSubmit}>
-            <Grid
-              container
-              justifyContent={"center"}
-              alignItems="center"
-              direction="column"
-              spacing={4}
-              sx={{ paddingTop: "30%" }}
-            >
-              <Grid item>
-                <AuthInput
-                  ref={emailRef}
-                  placeholder="   Your Email"
-                  type="email"
-                ></AuthInput>
-              </Grid>
-              <Grid item>
-                <AuthInput
-                  ref={passwordRef}
-                  placeholder="   Password"
-                  type="password"
-                ></AuthInput>
-              </Grid>
-              <Grid item>
-                <AuthInput
-                  ref={confirmPasswordRef}
-                  placeholder="   Confirm Password"
-                  type="password"
-                ></AuthInput>
-              </Grid>
-              <Grid
-                item
-                container
-                justifyContent="flex-end"
-                sx={{ paddingRight: "200px" }}
-              >
-                <AuthButton disabled={loading} name={"Sign Up"} />
-              </Grid>
-              <Link href="/authentication/employer/login">
-                <Typography variant="body1">Log in</Typography>
-              </Link>
-            </Grid>
-          </form>
-          <Typography sx={{ color: "red" }} variant="body2">
-            {error}
-          </Typography>
-        </Grid>
+        <form onSubmit={handleSubmit}>
+          <Box
+            sx={{
+              border: "solid",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              borderColor: "#0EC5D7",
+              padding: "15px",
+              backgroundColor: "info.contrastText",
+            }}
+          >
+            <Label htmlFor={"email"}>Email address</Label>
+            <Input
+              ref={emailRef}
+              placeholder="email"
+              id="email"
+              type="email"
+              required
+            ></Input>
+            <Label htmlFor={"password"}>password</Label>
+            <Input
+              ref={passwordRef}
+              placeholder="password"
+              id="password"
+              type="password"
+              required
+            ></Input>
+            <Label htmlFor={"confpassword"}> confirm password</Label>
+            <Input
+              ref={confirmPasswordRef}
+              placeholder="   Confirm Password"
+              type="password"
+              id="confpassword"
+            ></Input>
+
+            <Box sx={{ display: "flex", justifyContent: "center" }}>
+              {" "}
+              <input
+                disabled={loading}
+                type="submit"
+                value={"sign up"}
+                style={{
+                  width: "123px",
+                  height: "58px",
+                  backgroundColor: "#0EC5D7",
+                  border: "none",
+                  color: "#FFFFFF",
+                  borderRadius: "5px",
+                  margin: "15px",
+                }}
+              ></input>
+            </Box>
+            <Typography sx={{ color: "red" }} variant="body2">
+              {error}
+            </Typography>
+          </Box>
+        </form>
       </Box>
     </>
   );
