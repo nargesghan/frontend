@@ -12,6 +12,7 @@ import WorkIcon from "@mui/icons-material/Work";
 import SchoolIcon from "@mui/icons-material/School";
 import CardMembershipIcon from "@mui/icons-material/CardMembership";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import { Typography, responsiveFontSizes } from "@mui/material";
 
 const Input = styled("input")({
   width: "507px",
@@ -43,7 +44,7 @@ interface Props {
 
 const Page: React.FC<Props> = (props) => {
   const [fileName, setFileName] = useState<string | null>(null);
-
+const [res,setRes]=useState('');
   const nameRef = useRef<HTMLInputElement>(null);
   const lastnameRef= useRef<HTMLInputElement>(null);
   const phoneRef = useRef<HTMLInputElement>(null);
@@ -115,6 +116,7 @@ const Page: React.FC<Props> = (props) => {
     } else {
       const responseData = await response.json();
       console.log(responseData);
+      setRes(responseData.message)
     }
   };
 
@@ -432,9 +434,12 @@ const Page: React.FC<Props> = (props) => {
                 color: "#FFFFFF",
               }}
             ></input>
+                  
           </Box>
+          <Typography sx={{color:'info.main'}}>{res}!</Typography>
         </Stack>
       </form>
+
     </Box>
   );
 };
