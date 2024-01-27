@@ -11,8 +11,17 @@ import InterestsIcon from "@mui/icons-material/Interests";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import  Button  from "@mui/material/Button";
 
 export default function TypographyMenu() {
+  const route=useRouter()
+  function handleLogOut(){
+   localStorage.removeItem('token');
+   localStorage.removeItem('userId');
+   localStorage.removeItem('userType');
+   route.replace('/')
+ }
   return (
     <Paper  sx={{ width:'160px', bgcolor: "info.light",display:'flex',justifyContent:'center',position:'absolute' }}>
       <MenuList>
@@ -62,14 +71,19 @@ export default function TypographyMenu() {
           </Typography>
         </MenuItem>
         </Link>
+       
         <MenuItem>
+        
           <ListItemIcon>
             <LogoutIcon fontSize="small"/>
           </ListItemIcon>
+          <Button onClick={handleLogOut}>
           <Typography variant="body2" noWrap>
           Log out
           </Typography>
+          </Button>
         </MenuItem>
+       
       </MenuList>
     </Paper>
   );

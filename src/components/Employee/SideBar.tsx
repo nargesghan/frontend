@@ -11,6 +11,8 @@ import WorkIcon from "@mui/icons-material/Work";
 import InterestsIcon from "@mui/icons-material/Interests";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { useRouter } from "next/navigation";
+import  Button  from "@mui/material/Button";
 
 import Link from "next/link";
 
@@ -27,6 +29,15 @@ interface Props {
 }
 
 const Sidebar: React.FC<Props> = (props) => {
+
+  const route=useRouter()
+  function handleLogOut(){
+   localStorage.removeItem('token');
+   localStorage.removeItem('userId');
+   localStorage.removeItem('userType');
+   route.replace('/')
+ }
+
   return (
     <List
       sx={{
@@ -89,7 +100,8 @@ const Sidebar: React.FC<Props> = (props) => {
           <ListItemIcon>
             <LogoutIcon />
           </ListItemIcon>
-          <ListItemText>Log out</ListItemText>
+          <Button onClick={handleLogOut}>
+          <ListItemText>Log out</ListItemText></Button>
         </ListItemButton>
       </Link>
     </List>
