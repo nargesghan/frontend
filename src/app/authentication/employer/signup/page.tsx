@@ -1,11 +1,7 @@
 "use client";
 import React, { useRef, useState } from "react";
 import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import AuthButton from "@/components/authentication/AuthButton";
-import AuthInput from "@/components/authentication/AuthInput";
 import { Typography } from "@mui/material";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import ButtonAppBar from "@/components/General/EmployerNavbar";
 import { styled } from "@mui/system";

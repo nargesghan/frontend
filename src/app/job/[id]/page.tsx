@@ -6,6 +6,7 @@ import Grid from "@mui/material/Grid";
 import {jobs} from "@/MockData/data";
 import Jobdescription from "@/components/Job/Jobdescription";
 import JobBox from "@/components/General/JobBox";
+import Divider from '@mui/material/Divider';
 
 export default function Page({ params }: { params: { id: string } }) {
   const Job = jobs.find((job) => job.id === params.id);
@@ -41,6 +42,7 @@ export default function Page({ params }: { params: { id: string } }) {
         salary={Job?.salary}
         date={Job?.date.toDateString()}
       />
+      <Divider sx={{color:'info.main'}}>related job</Divider>
       {/* related job advertisements */}
       <Grid
         container
@@ -83,6 +85,7 @@ export default function Page({ params }: { params: { id: string } }) {
         salary={job?.salary}
         date={new Date(job?.timestamp).toDateString()}
       />
+      <Divider sx={{color:'info.main'}}>related job</Divider>
       {/* related job advertisements */}
       <Grid
         container

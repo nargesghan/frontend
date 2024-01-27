@@ -5,12 +5,14 @@ import JobBox from "@/components/General/JobBox";
 import {jobs} from "@/MockData/data";
 import  Grid  from "@mui/material/Grid";
 import ButtonAppBar from "../components/General/EmployeeNavbar";
+import Divider from '@mui/material/Divider';
 
 export default function Home() {
   return (
     <>
       <ButtonAppBar/>
       <SiteIntro />
+      <Divider sx={{color:'info.main'}}>The latest job ads</Divider>
       <Grid
         container
         spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}
