@@ -57,15 +57,16 @@ export default function ButtonAppBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
         <Toolbar>
-          <Typography
-            variant="h2"
-            component="h1"
-            sx={{ flexGrow: 1, paddingLeft: 10 }}
-          >
-            JobJob
-          </Typography>
+          <Link href="/"  style={{ flexGrow: 1, paddingLeft: 10 }}>
+            <Typography
+              variant="h2"
+              component="h1"
+            >
+              JobJob
+            </Typography>
+          </Link>
           <Link href="/authentication/employer/signup">
-          <Button color="inherit">Employers/Post Job</Button>
+            <Button color="inherit">Employers/Post Job</Button>
           </Link>
           <Link href="/authentication/employee/login">
             <Button color="inherit">Login</Button>

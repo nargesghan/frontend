@@ -7,6 +7,7 @@ import AuthInput from "@/components/authentication/AuthInput";
 import AuthButton from "@/components/authentication/AuthButton";
 import Typography from "@mui/material/Typography";
 import { useRouter } from "next/navigation";
+import ButtonAppBar from "@/components/General/EmployeeNavbar";
 
 const imageUrl = "/authentication/login.svg";
 export default function Page() {
@@ -59,74 +60,81 @@ export default function Page() {
   };
 
   return (
-    <Box
-      sx={{
-        width: "100vw",
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Grid
-        container
-        justifyContent={"center"}
-        alignItems="center"
-        direction="column"
-        spacing={4}
+    <>
+      <ButtonAppBar />
+      <Box
         sx={{
-          backgroundImage: `url(${imageUrl})`,
-          height: "80%",
-          width: "80%",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "contain",
-          backgroundPosition: "center",
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: "100px",
         }}
       >
-        <form onSubmit={handleSubmit}>
-          <Grid
-            container
-            justifyContent={"center"}
-            alignItems="center"
-            direction="column"
-            spacing={4}
-            sx={{ paddingTop: "30%" }}
-          >
-            <Grid item>
-              <AuthInput
-                ref={emailRef}
-                placeholder="   email"
-                type="email"
-              ></AuthInput>
-            </Grid>
-            <Grid item>
-              <AuthInput
-                ref={passwordRef}
-                placeholder="   Password"
-                type="password"
-              ></AuthInput>
-            </Grid>
-            <Grid item>
-              <Link href={"/"}>Forgot Password</Link>
-            </Grid>
+        <Grid
+          container
+          justifyContent={"center"}
+          alignItems="center"
+          direction="column"
+          spacing={2}
+          sx={{
+            backgroundImage: `url(${imageUrl})`,
+            height: "800px",
+            width: "800px",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "contain",
+            backgroundPosition: "center",
+          }}
+        >
+          <form onSubmit={handleSubmit}>
             <Grid
-              item
               container
-              justifyContent="flex-end"
-              sx={{ paddingRight: "200px" }}
+              justifyContent={"center"}
+              alignItems="center"
+              direction="column"
+              spacing={2}
+              sx={{ paddingTop: "30%" }}
             >
-              {" "}
-            </Grid>
-            <AuthButton disabled={loading} name={"Log in"} />{" "}
-            <Link href="/authentication/employee/signup">
-              <Typography variant="body1">sign up</Typography>
-            </Link>
-          </Grid>{" "}
-        </form>{" "}
-        <Typography sx={{ color: "red" }} variant="body2">
-          {error}
-        </Typography>
-      </Grid>
-    </Box>
+              <Grid item>
+                <AuthInput
+                  ref={emailRef}
+                  placeholder="   email"
+                  type="email"
+                ></AuthInput>
+              </Grid>
+              <Grid item>
+                <AuthInput
+                  ref={passwordRef}
+                  placeholder="   Password"
+                  type="password"
+                ></AuthInput>
+              </Grid>
+              <Grid item>
+                <Link
+                  href={"/"}
+                  style={{ fontSize: "1rem", lineHeight: "2px" }}
+                >
+                  Forgot Password
+                </Link>
+              </Grid>
+              <Grid item>
+                <AuthButton disabled={loading} name={"Log in"} />{" "}
+              </Grid>
+              <Grid item>
+                <Link href="/authentication/employee/signup">
+                  <Typography variant="body1" lineHeight={1}>
+                    sign up
+                  </Typography>
+                </Link>
+              </Grid>
+            </Grid>{" "}
+          </form>{" "}
+          <Typography sx={{ color: "red" }} variant="body2">
+            {error}
+          </Typography>
+        </Grid>
+      </Box>
+    </>
   );
 }
