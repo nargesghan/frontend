@@ -1,9 +1,10 @@
 import React from 'react';
-import { Grid, Typography, Box } from "@mui/material";
+import { Grid, Typography, Stack} from "@mui/material";
 import { AddToFavorites, SendResume, Share } from "../Job/Buttons";
 import Image from "next/image";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import Link from 'next/link';
 
 interface Props {
     imageURL: string;
@@ -38,14 +39,16 @@ const JobBox: React.FC<Props> = ({  imageURL,
     justifyContent={"center"}
   >
     <Grid item xs={3}>
+      <Link href={`/job/${id}`}>
       <Image
         src={imageURL}
         alt={`${company} logo`}
         width={140}
         height={140}
       />
+      </Link>
     </Grid>
-    <Grid item xs={8}>
+    <Grid item xs={5}>
       <Typography variant="h2" sx={{ color: "#212121" }}>
         {title}
       </Typography>
@@ -61,11 +64,13 @@ const JobBox: React.FC<Props> = ({  imageURL,
       </Typography>
     </Grid>
 
-    <Grid item xs={3}>
+    <Grid item xs={5}>
+    <Stack spacing={2}>
       <SendResume sentResume={sentResume} />
       <AddToFavorites liked={liked}/>
+      </Stack>
     </Grid>
-    <Grid item xs={2}>
+    <Grid item xs={3}>
       <Share />
     </Grid>
   </Grid>

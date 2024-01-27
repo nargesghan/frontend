@@ -13,11 +13,11 @@ export const SendResume: React.FC<SendResumeProps> = ({ sentResume }) => {
   return (
     <>
       {sentResume ? (
-        <Button variant="contained" color="secondary" disabled>
+        <Button variant="contained" color="secondary" disabled sx={{width:'150px',height:'45px'}}>
           Resume Sent
         </Button>
       ) : (
-        <Button variant="contained" color="info">
+        <Button variant="contained" color="info" sx={{width:'150px',height:'45px'}}>
           Send Resume
         </Button>
       )}
@@ -37,11 +37,11 @@ export const AddToFavorites: React.FC<AddToFavoritesProps> = ({ liked }) => {
   return (
     <>
       {like ? (
-        <Button variant="outlined" color="info" onClick={Save}>
+        <Button variant="outlined" color="info" onClick={Save} sx={{width:'150px',height:'45px'}}>
           Add to favorites
         </Button>
       ) : (
-        <Button variant="outlined" color="info" onClick={Save}>
+        <Button variant="outlined" color="info" onClick={Save}sx={{width:'150px',height:'45px'}}>
           <BookmarkAddedIcon color='info'/>
         </Button>
       )}

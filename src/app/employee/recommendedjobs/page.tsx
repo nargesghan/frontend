@@ -34,7 +34,7 @@ const Page: React.FC<Props> = (props) => {
     fetchJobs();
   }, []); 
 if (jobs.length==0){return (
-  <div>
+  <>
     <JobBox   imageURL="/General/digikala.svg"
             title="front-end developer"
             location="Tehran"
@@ -70,10 +70,10 @@ if (jobs.length==0){return (
             sentResume={true}
             liked={false}
             id="1"/>
-  </div>
+ </>
 )}
   return (
-    <div>
+    <>
     {jobs.map((job, index) => (
       <JobBox
         key={index}
@@ -86,7 +86,7 @@ if (jobs.length==0){return (
         id={job.id.toString()}
       />
     ))}
-  </div>
+  </>
   );
 }
 
