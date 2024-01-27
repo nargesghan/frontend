@@ -52,7 +52,7 @@ export default function TypographyMenu() {
           </Typography>
         </MenuItem>
         </Link>
-      <Link href="/employee/dashboard/settings">
+      <Link href="/employee/dashboard/setting">
         <MenuItem>
           <ListItemIcon>
             <SettingsIcon fontSize="small"/>

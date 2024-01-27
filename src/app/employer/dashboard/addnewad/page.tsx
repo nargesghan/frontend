@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef ,useState} from "react";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/system";
 import Stack from "@mui/material/Stack";
@@ -7,6 +7,7 @@ import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutli
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import WorkIcon from "@mui/icons-material/Work";
 import DescriptionIcon from "@mui/icons-material/Description";
+import { Typography } from "@mui/material";
 
 const Input = styled("input")({
   width: "507px",
@@ -46,6 +47,8 @@ const Page: React.FC<Props> = (props) => {
   const qualificationsRef = useRef<HTMLTextAreaElement>(null);
   const responsibilitiesRef = useRef<HTMLTextAreaElement>(null);
 
+  const [res,setRes]=useState('');
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -62,16 +65,12 @@ const Page: React.FC<Props> = (props) => {
     data.append("typeRef", typeRef.current?.value || "");
     data.append("experience", experienceRef.current?.value || "");
     data.append("qualification", qualificationsRef.current?.value || "");
-  
     data.append("responsibilities", responsibilitiesRef.current?.value || "");
- 
-
- 
 
     const response = await fetch(url, {
       method: "POST",
       headers: {
-        Authorization: `Token ${token}`, 
+        Authorization: `Token ${token}`,
       },
       body: data,
     });
@@ -82,6 +81,7 @@ const Page: React.FC<Props> = (props) => {
     } else {
       const responseData = await response.json();
       console.log(responseData);
+      setRes(responseData.message)
     }
   };
 
@@ -93,7 +93,6 @@ const Page: React.FC<Props> = (props) => {
         marginTop: "200px",
         display: "flex",
         alignItems: "center",
-
         flexDirection: "column",
       }}
     >
@@ -193,7 +192,6 @@ const Page: React.FC<Props> = (props) => {
                 <option value="Intern">Intern</option>
                 <option value="Junior">Junior</option>
                 <option value="Senior">Senior</option>
-                
               </select>
             </Stack>
           </Box>
@@ -320,6 +318,7 @@ const Page: React.FC<Props> = (props) => {
               }}
             ></input>
           </Box>
+          <Typography sx={{color:'info.main'}}>{res}</Typography>
         </Stack>
       </form>
     </Box>

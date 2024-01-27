@@ -3,6 +3,7 @@ import React from "react";
 import Box from "@mui/material/Box";
 import SRTable from "@/components/Employee/SubmittedResumesTable";
 import { Button, Typography } from "@mui/material";
+import Link from "next/link";
 interface Props {
   // define your props here
 }
@@ -40,6 +41,7 @@ const Page: React.FC<Props> = (props) => {
         </Box>
         <SRTable />
       </Box>
+      <Link href='/'>
       <Button
         sx={{
           maxWidth: "330px",
@@ -60,6 +62,7 @@ const Page: React.FC<Props> = (props) => {
       >
         Explore more jobs...
       </Button>
+      </Link>
     </Box>
   );
 };

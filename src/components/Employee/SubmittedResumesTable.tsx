@@ -10,6 +10,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import Link from "next/link";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
@@ -134,14 +135,17 @@ export default function SRTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {rows.map((row,index) => (
+            
             <StyledTableRow key={row.title + row.company}>
               <StyledTableCell component="th" scope="row">
+                
                 <Typography
                   sx={{ fontSize: "14px", fontWeight: "300", color: "#101828" }}
                 >
                   {row.title}
                 </Typography>
+               
                 <Typography
                   sx={{ fontSize: "14px", fontWeight: "300", color: "#667085" }}
                 >

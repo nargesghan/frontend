@@ -76,7 +76,7 @@ const Sidebar: React.FC<Props> = (props) => {
           <ListItemText>Interested jobs</ListItemText>
         </ListItemButton>
       </Link>
-      <Link href="/employee/dashboard/settings">
+      <Link href="/employee/dashboard/setting">
         <ListItemButton divider={true}>
           <ListItemIcon>
             <SettingsIcon />

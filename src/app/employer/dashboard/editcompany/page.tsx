@@ -111,7 +111,7 @@ const Page: React.FC<Props> = (props) => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          height: "1200px",
+          height: "900px",
           borderColor: "#0EC5D7",
           padding: "15px",
         }}

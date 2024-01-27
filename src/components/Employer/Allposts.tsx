@@ -79,14 +79,14 @@ const SRTable: React.FC<SRTableProps> = ({ data }) => {
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>title</StyledTableCell>
+          <StyledTableCell>title</StyledTableCell>
             <StyledTableCell align="right">Publication date</StyledTableCell>
             <StyledTableCell align="right">Expiration date</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {data.length != 0
-            ? data.map((row) => (
+            ? data.map((row,index) => (
                 <StyledTableRow key={row.data.title}>
                   <StyledTableCell component="th" scope="row">
                     <Typography
@@ -96,7 +96,7 @@ const SRTable: React.FC<SRTableProps> = ({ data }) => {
                         color: "#101828",
                       }}
                     >
-                      <Link href={`/job/${row.id}`}> {row.data.title}</Link>
+                     <Link href={`/employer/dashboard/jobs/${index+1}`}> {row.data.title}</Link>
                     </Typography>
                   </StyledTableCell>
 
@@ -109,7 +109,7 @@ const SRTable: React.FC<SRTableProps> = ({ data }) => {
                   </StyledTableCell>
                 </StyledTableRow>
               ))
-            : rows.map((row) => (
+            : rows.map((row,index) => (
                 <StyledTableRow key={row.title}>
                   <StyledTableCell component="th" scope="row">
                     <Typography
@@ -119,7 +119,7 @@ const SRTable: React.FC<SRTableProps> = ({ data }) => {
                         color: "#101828",
                       }}
                     >
-                      <Link href={`/job/}`}> {row.title}</Link>
+                      <Link href={`/employer/dashboard/jobs/${index+1}`}> {row.title}</Link>
                     </Typography>
                   </StyledTableCell>
 
