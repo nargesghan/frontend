@@ -2,7 +2,7 @@ import React from 'react';
 import  Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import  Typography  from "@mui/material/Typography";
-
+import Link from 'next/link';
 import Image from "next/image";
 
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -38,7 +38,7 @@ const Application: React.FC<Props> = ({name,city,imageURL,status}) => {
         height={140}
       />
     </Grid>
-    <Grid item xs={8}>
+    <Grid item xs={5}>
       <Typography variant="h2" sx={{ color: "#212121" }}>
         {name}
       </Typography>
@@ -50,13 +50,14 @@ const Application: React.FC<Props> = ({name,city,imageURL,status}) => {
  
     </Grid>
 
-    <Grid item xs={3}>
-   <Button variant="contained" color="info"  sx={{width:'180px',height:'62px'}}>view resume</Button>
+    <Grid item xs={4}>
+      <Link href={`/employer/dashboard/jobs/${1}/resumes/${name}`}>
+   <Button variant="contained" color="info"  sx={{width:'150px',height:'45px'}}>view resume</Button></Link>
     </Grid>
-    <Grid item xs={2}>
-        {status=='accept'?   <Button variant='contained' sx={{bgcolor:'#DAEC8B',color:'#2DC071',width:'111px',height:'62px'}}>accepted</Button>:
-        status=='pending'?   <Button variant='contained' sx={{bgcolor:'#BFBEA1',color:'#737260',width:'111px',height:'62px'}}>pending</Button>:
-        <Button variant='contained' sx={{bgcolor:'#FFE7F1',color:'#732A49',width:'111px',height:'62px'}}>rejected</Button>}
+    <Grid item xs={4}>
+        {status=='accept'?   <Button variant='contained' sx={{bgcolor:'#DAEC8B',color:'#2DC071',width:'150px',height:'45px'}}>accepted</Button>:
+        status=='pending'?   <Button variant='contained' sx={{bgcolor:'#BFBEA1',color:'#737260',width:'150px',height:'45px'}}>pending</Button>:
+        <Button variant='contained' sx={{bgcolor:'#FFE7F1',color:'#732A49',width:'150px',height:'45px'}}>rejected</Button>}
   
     </Grid>
   </Grid>

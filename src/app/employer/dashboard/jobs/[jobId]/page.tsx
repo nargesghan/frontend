@@ -9,6 +9,7 @@ import Box from "@mui/material/Box";
 import { jobs } from "@/MockData/data";
 import Stack from "@mui/material/Stack";
 import Application from "@/components/Employer/dashboard/Application";
+import Link from "next/link";
 
 async function getData() {
   const res = await fetch("https://api.example.com/...");
@@ -47,6 +48,7 @@ export default async function Page({ params }: { params: { jobId: string } }) {
         }}
         alignItems="center"
         justifyContent={"center"}
+        spacing={1}
       >
         <Grid item xs={3}>
           <Image
@@ -77,9 +79,11 @@ export default async function Page({ params }: { params: { jobId: string } }) {
           </a>
         </Grid>
         <Grid item xs={5}>
+          
           <Button variant="contained" color="info">
             Edit job information
           </Button>
+          
         </Grid>
       </Grid>
       <Stack
