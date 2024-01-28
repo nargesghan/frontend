@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
-import ButtonAppBar from "@/components/General/EmployerNavbar";
+import EmployerNavbar from "@/components/General/EmployerNavbar";
 import { styled } from "@mui/system";
 
 const imageUrl = "/authentication/login.svg";
@@ -80,7 +80,7 @@ export default function Page() {
 
   return (
     <>
-      <ButtonAppBar />
+      <EmployerNavbar />
       <Box
         sx={{
           backgroundImage: `url(/General/employerAuthbackground.jpg)`,

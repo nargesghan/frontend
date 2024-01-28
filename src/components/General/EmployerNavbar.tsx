@@ -52,7 +52,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function ButtonAppBar() {
+export default function EmployerNavbar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">

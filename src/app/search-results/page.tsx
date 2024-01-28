@@ -3,8 +3,9 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import ButtonAppBar from "@/components/Employee/EmployeeAuthNavbar";
+import EmployeeNavbar from "@/components/General/EmployeeNavbar";
 import SearchBox from "@/components/Employee/SearchBox";
-import { Box, Stack } from "@mui/material";
+import { Box, Button, Stack } from "@mui/material";
 import JobBox from '@/components/Employee/JobBox';
 
 interface Props {
@@ -48,8 +49,8 @@ const SearchPage: React.FC<Props> = (props) => {
   }, [title, location, token]);
   
   return (
-    <>
-      <ButtonAppBar />
+    <>{token?<ButtonAppBar/>:<EmployeeNavbar/>}
+      
       <SearchBox />
       <Stack
         direction={"column"}

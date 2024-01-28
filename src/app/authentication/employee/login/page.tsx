@@ -7,7 +7,7 @@ import AuthInput from "@/components/authentication/AuthInput";
 import AuthButton from "@/components/authentication/AuthButton";
 import Typography from "@mui/material/Typography";
 import { useRouter } from "next/navigation";
-import ButtonAppBar from "@/components/General/EmployeeNavbar";
+import EmployeeNavbar from "@/components/General/EmployeeNavbar";
 
 const imageUrl = "/authentication/login.svg";
 export default function Page() {
@@ -61,7 +61,7 @@ export default function Page() {
 
   return (
     <>
-      <ButtonAppBar />
+      <EmployeeNavbar />
       <Box
         sx={{
           width: "100vw",

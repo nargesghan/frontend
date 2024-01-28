@@ -4,13 +4,13 @@ import SiteIntro from "../components/Home/SiteIntro";
 import JobBox from "@/components/General/JobBox";
 import {jobs} from "@/MockData/data";
 import  Grid  from "@mui/material/Grid";
-import ButtonAppBar from "../components/General/EmployeeNavbar";
+import EmployeeNavbar from "../components/General/EmployeeNavbar";
 import Divider from '@mui/material/Divider';
 
 export default function Home() {
   return (
     <>
-      <ButtonAppBar/>
+      <EmployeeNavbar/>
       <SiteIntro />
       <Divider sx={{color:'info.main'}}>The latest job ads</Divider>
       <Grid

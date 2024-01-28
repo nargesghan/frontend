@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import ButtonAppBar from "@/components/General/EmployeeNavbar";
+import EmployeeNavbar from "@/components/General/EmployeeNavbar";
 import Companydescription from "@/components/Company/companydescription";
 import { usePathname } from "next/navigation";
 import { companies } from "@/MockData/data";
@@ -23,7 +23,7 @@ export default function Page() {
   }
   return (
     <>
-      <ButtonAppBar />
+      <EmployeeNavbar />
       <Companyheader
         imageURL={Company?.imageURL}
         name={Company?.name}

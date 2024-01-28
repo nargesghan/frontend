@@ -2,7 +2,7 @@
 import React, { useRef, useState } from "react";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/system";
-import ButtonAppBar from "@/components/General/EmployerNavbar";
+import EmployerNavbar from "@/components/General/EmployerNavbar";
 import { useRouter } from "next/navigation";
 import Typography from "@mui/material/Typography";
 
@@ -75,7 +75,7 @@ export default function Page() {
 
   return (
     <>
-      <ButtonAppBar />
+      <EmployerNavbar />
       <Box
         sx={{
           backgroundImage: `url(/General/employerAuthbackground.jpg)`,

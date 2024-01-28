@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from "react";
-import ButtonAppBar from "@/components/General/EmployeeNavbar";
+import EmployeeNavbar from "@/components/General/EmployeeNavbar";
 import Jobheader from "@/components/Job/Jobheader";
 import Grid from "@mui/material/Grid";
 import {jobs} from "@/MockData/data";
@@ -27,7 +27,7 @@ export default function Page({ params }: { params: { id: string } }) {
   }
   return (
     <>
-      <ButtonAppBar />
+      <EmployeeNavbar />
       <Jobheader
         imageURL={Job?.imageURL}
         title={Job?.title}
@@ -70,7 +70,7 @@ export default function Page({ params }: { params: { id: string } }) {
   );}
   return (
     <>
-      <ButtonAppBar />
+      <EmployeeNavbar />
       <Jobheader
         imageURL={job?.imageURL}
         title={job?.title}
