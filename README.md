@@ -1,41 +1,74 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Job search web app-Software design course project
+ https://www.figma.com/file/jSCpv7cuA4G1h5k4gYT6iW/job-search?type=design&node-id=0%3A1&mode=design&t=Mj0cpOx1o89cFBa6-1
 
-## Getting Started
 
-First, run
-```bash
-npm install 
-```
 
-then, run the development server:
+## Table of contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Useful resources](#useful-resources)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Overview
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### The challenge
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Users should be able to:
 
-## Deploy on Vercel
+-sign in and log in to the web site with their email and password
+-Job seekers can create a resume for themselves or upload their personal resume
+-see all of jobs posted
+-Search posted jobs
+-companies can edit their profile
+-Post new jobs
+-Send an application for the desired job
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+### Links
+
+- Solution URL: [[ solution URL](https://github.com/nargesghan/frontend/)]
+
+
+
+### Built with
+
+- vite
+- mui - For styles
+- next.js 14
+- typescript
+- [React](https://reactjs.org/) - JS library
+
+
+
+
+### What I learned
++ working with typescript.
++ react hooks( useState and useeffect)
++ Restfull apis
+
+
+
+
+
+### Useful resources
+
+- [[material ui docmentation](https://mui.com/)]
+- [[next.js docmentation](https://nextjs.org/docs)]
+
+
+
+
+
+
+
+
